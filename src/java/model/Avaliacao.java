@@ -23,6 +23,7 @@ public class Avaliacao {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
     private Calendar dataAvaliacao; //ou Date?
+    private Double nota;
     @Column(nullable = false)
     private String descricao;
     
@@ -55,6 +56,14 @@ public class Avaliacao {
         this.dataAvaliacao = dataAvaliacao;
     }
 
+    public Double getNota() {
+        return nota;
+    }
+
+    public void setNota(Double nota) {
+        this.nota = nota;
+    }
+    
     public String getDescricao() {
         return descricao;
     }
