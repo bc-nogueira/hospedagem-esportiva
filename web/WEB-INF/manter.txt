@@ -1,0 +1,1 @@
+Arquivo somente para manter a pasta WEB-INF no git.
