@@ -1,6 +1,7 @@
 package model;
 
 import java.util.Calendar;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -17,14 +18,17 @@ public class Avaliacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
     private Enum tipoAvaliacao;
     @Temporal(TemporalType.TIMESTAMP)
+    @Column(nullable = false)
     private Calendar dataAvaliacao; //ou Date?
+    @Column(nullable = false)
     private String descricao;
     
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Usuario avaliador;
-    @ManyToOne
+    @ManyToOne(optional = false)
     private Usuario avaliado;
 
     public Integer getId() {
