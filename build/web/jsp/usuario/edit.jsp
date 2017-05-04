@@ -40,11 +40,6 @@
                                    name="nome" value="${usuarioLogado.nome}"/><br/>
                         </div>
                         <div class="form-group">
-                            <label for="sobrenome">Sobrenome:</label> 
-                            <input type="text" class="form-control" id="sobrenome" 
-                                   name="sobrenome" value="${usuarioLogado.sobrenome}"/><br/>
-                        </div>
-                        <div class="form-group">
                             <label for="localMoradia">Local de moradia:</label> 
                             <input type="text" class="form-control" id="localMoradia" 
                                    name="localMoradia"  value="${usuarioLogado.localMoradia}"/><br/>

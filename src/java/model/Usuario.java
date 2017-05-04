@@ -26,8 +26,6 @@ public class Usuario {
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false)
-    private String sobrenome;
-    @Column(nullable = false)
     private String localMoradia;
     @Column(nullable = false)
     private String esporteFavorito;
@@ -57,14 +55,6 @@ public class Usuario {
 
     public void setNome(String nome) {
         this.nome = nome;
-    }
-
-    public String getSobrenome() {
-        return sobrenome;
-    }
-
-    public void setSobrenome(String sobrenome) {
-        this.sobrenome = sobrenome;
     }
 
     public String getLocalMoradia() {

@@ -35,19 +35,15 @@
                         <hr class="my-4"/>
                         <div class="row">
                             <div class="col-2"><b>Nome:</b></div>
-                            <div class="col">${usuarioLogado.nome}</div>
-                            <div class="col-2"><b>Sobrenome:</b></div>
-                            <div class="col-4">${usuarioLogado.sobrenome}</div>
+                            <div class="col-4">${usuarioLogado.nome}</div>
+                            <div class="col-2"><b>E-mail:</b></div>
+                            <div class="col-4">${usuarioLogado.email}</div>
                         </div>
                         <div class="row">
                             <div class="col-2"><b>Local de Moradia:</b></div>
                             <div class="col-4">${usuarioLogado.localMoradia}</div>
                             <div class="col-2"><b>Esporte Favorito:</b></div>
                             <div class="col-4">${usuarioLogado.esporteFavorito}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2"><b>E-mail:</b></div>
-                            <div class="col">${usuarioLogado.email}</div>
                         </div>
                         <div class="row">
                             <div class="col-2"><b>Disposto a receber?</b></div>
@@ -77,7 +73,7 @@
                             <c:forEach var="avaliacao" items="${recebidasAmigos}">
                                 <div class="card text-center margin-bottom-20" id="avaliacoes-amigos">
                                     <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
                                     </div>
                                     <div class="card-block">
                                         <h4 class="card-title">
@@ -104,7 +100,7 @@
                             <c:forEach var="avaliacao" items="${recebidasHospede}">
                                 <div class="card text-center margin-bottom-20" id="avaliacoes-hospede">
                                     <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
                                     </div>
                                     <div class="card-block">
                                         <h4 class="card-title">
@@ -131,7 +127,7 @@
                             <c:forEach var="avaliacao" items="${recebidasAnfitriao}">
                                 <div class="card text-center margin-bottom-20" id="avaliacoes-anfitriao">
                                     <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
                                     </div>
                                     <div class="card-block">
                                         <h4 class="card-title">
@@ -158,7 +154,7 @@
                             <c:forEach var="avaliacao" items="${recebidasLevaEsporte}">
                                 <div class="card text-center margin-bottom-20" id="avaliacoes-leva">
                                     <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
                                     </div>
                                     <div class="card-block">
                                         <h4 class="card-title">
@@ -185,7 +181,7 @@
                             <c:forEach var="avaliacao" items="${recebidasParticipaEsporte}">
                                 <div class="card text-center margin-bottom-20" id="avaliacoes-participa">
                                     <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
                                     </div>
                                     <div class="card-block">
                                         <h4 class="card-title">

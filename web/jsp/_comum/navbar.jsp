@@ -27,7 +27,7 @@
                 <span style="margin-top: 6px">
                     Olá 
                     <a href="${pageContext.request.contextPath}/jsp/usuario/index.jsp">
-                        ${usuarioLogado.nome} ${usuarioLogado.sobrenome}
+                        ${usuarioLogado.nome}
                     </a>!
                 </span>
                 

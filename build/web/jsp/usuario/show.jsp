@@ -35,19 +35,15 @@
                         <hr class="my-4"/>
                         <div class="row">
                             <div class="col-2"><b>Nome:</b></div>
-                            <div class="col">${usuarioMostrar.nome}</div>
-                            <div class="col-2"><b>Sobrenome:</b></div>
-                            <div class="col-4">${usuarioMostrar.sobrenome}</div>
+                            <div class="col-4">${usuarioMostrar.nome}</div>
+                            <div class="col-2"><b>E-mail:</b></div>
+                            <div class="col-4">${usuarioMostrar.email}</div>
                         </div>
                         <div class="row">
                             <div class="col-2"><b>Local de Moradia:</b></div>
                             <div class="col-4">${usuarioMostrar.localMoradia}</div>
                             <div class="col-2"><b>Esporte Favorito:</b></div>
                             <div class="col-4">${usuarioMostrar.esporteFavorito}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2"><b>E-mail:</b></div>
-                            <div class="col">${usuarioMostrar.email}</div>
                         </div>
                         <div class="row">
                             <div class="col-2"><b>Disposto a receber?</b></div>
@@ -79,10 +75,10 @@
                                     <div class="card-header">
                                         <c:choose>
                                             <c:when test="${avaliacao.avaliador.id != usuarioLogado.id}">
-                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
                                             </c:when>
                                             <c:when test="${avaliacao.avaliador.id == usuarioLogado.id}">
-                                                ${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}
+                                                ${avaliacao.avaliador.nome}
                                             </c:when>
                                         </c:choose>
                                     </div>
@@ -113,10 +109,10 @@
                                     <div class="card-header">
                                         <c:choose>
                                             <c:when test="${avaliacao.avaliador.id != usuarioLogado.id}">
-                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
                                             </c:when>
                                             <c:when test="${avaliacao.avaliador.id == usuarioLogado.id}">
-                                                ${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}
+                                                ${avaliacao.avaliador.nome}
                                             </c:when>
                                         </c:choose>
                                     </div>
@@ -147,10 +143,10 @@
                                     <div class="card-header">
                                         <c:choose>
                                             <c:when test="${avaliacao.avaliador.id != usuarioLogado.id}">
-                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
                                             </c:when>
                                             <c:when test="${avaliacao.avaliador.id == usuarioLogado.id}">
-                                                ${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}
+                                                ${avaliacao.avaliador.nome}
                                             </c:when>
                                         </c:choose>
                                     </div>
@@ -181,10 +177,10 @@
                                     <div class="card-header">
                                         <c:choose>
                                             <c:when test="${avaliacao.avaliador.id != usuarioLogado.id}">
-                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
                                             </c:when>
                                             <c:when test="${avaliacao.avaliador.id == usuarioLogado.id}">
-                                                ${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}
+                                                ${avaliacao.avaliador.nome}
                                             </c:when>
                                         </c:choose>
                                     </div>
@@ -215,10 +211,10 @@
                                     <div class="card-header">
                                         <c:choose>
                                             <c:when test="${avaliacao.avaliador.id != usuarioLogado.id}">
-                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
                                             </c:when>
                                             <c:when test="${avaliacao.avaliador.id == usuarioLogado.id}">
-                                                ${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}
+                                                ${avaliacao.avaliador.nome}
                                             </c:when>
                                         </c:choose>
                                     </div>

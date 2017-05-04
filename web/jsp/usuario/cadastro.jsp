@@ -35,10 +35,6 @@
                     <input type="text" class="form-control" id="nome" name="nome"/><br/>
                 </div>
                 <div class="form-group">
-                    <label for="sobrenome">Sobrenome:</label> 
-                    <input type="text" class="form-control" id="sobrenome" name="sobrenome"/><br/>
-                </div>
-                <div class="form-group">
                     <label for="localMoradia">Local de moradia:</label> 
                     <input type="text" class="form-control" id="localMoradia" name="localMoradia"/><br/>
                 </div>
