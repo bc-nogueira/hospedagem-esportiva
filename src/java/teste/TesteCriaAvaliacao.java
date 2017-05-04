@@ -12,13 +12,14 @@ public class TesteCriaAvaliacao {
         Avaliacao avaliacao = new Avaliacao();
         avaliacao.setDescricao("Bla bla bla.");
         avaliacao.setDataAvaliacao(Calendar.getInstance());
-        avaliacao.setTipoAvaliacao(TipoAvaliacao.Usuario);
+        avaliacao.setTipoAvaliacao(TipoAvaliacao.USUSARIO);
+        avaliacao.setNota(3.5);
         
         EntityManager em = new JpaUtil().getEntityManager();
         em.getTransaction().begin();
         
-        Usuario avaliado = em.find(Usuario.class, 1);
-        Usuario avaliador = em.find(Usuario.class, 2);
+        Usuario avaliado = em.find(Usuario.class, 2);
+        Usuario avaliador = em.find(Usuario.class, 1);
         
         avaliacao.setAvaliado(avaliado);
         avaliacao.setAvaliador(avaliador);
