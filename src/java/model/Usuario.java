@@ -1,5 +1,6 @@
 package model;
 
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -7,10 +8,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({
-    @NamedQuery(name = "buscaPorEmailSenha",
+    @NamedQuery(name = "buscaPorEmailESenha",
             query = "select u from Usuario u " + 
                     "where u.email = :pEmail and u.senha = :pSenha")
 })
@@ -32,6 +34,11 @@ public class Usuario {
     private String email;
     @Column(nullable = false)
     private String senha;
+    
+    @OneToMany(mappedBy = "avaliador")
+    private List<Avaliacao> avaliacoesFeitas;
+    @OneToMany(mappedBy = "avaliado")
+    private List<Avaliacao> avaliacoesRecebidas;
     
     public Integer getId() {
         return id;
@@ -103,6 +110,22 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    public List<Avaliacao> getAvaliacoesFeitas() {
+        return avaliacoesFeitas;
+    }
+
+    public void setAvaliacoesFeitas(List<Avaliacao> avaliacoesFeitas) {
+        this.avaliacoesFeitas = avaliacoesFeitas;
+    }
+
+    public List<Avaliacao> getAvaliacoesRecebidas() {
+        return avaliacoesRecebidas;
+    }
+
+    public void setAvaliacoesRecebidas(List<Avaliacao> avaliacoesRecebidas) {
+        this.avaliacoesRecebidas = avaliacoesRecebidas;
     }
     
 }

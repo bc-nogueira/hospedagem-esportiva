@@ -18,11 +18,11 @@ public class UsuarioDAO {
         em.close();
     }
     
-    public Usuario buscaPorEmailSenha(String email, String senha) {
+    public Usuario buscaPorEmailESenha(String email, String senha) {
         EntityManager em = new JpaUtil().getEntityManager();
         em.getTransaction().begin();
         
-        TypedQuery<Usuario> typedQuery = em.createNamedQuery("buscaPorEmailSenha", Usuario.class);
+        TypedQuery<Usuario> typedQuery = em.createNamedQuery("buscaPorEmailESenha", Usuario.class);
         typedQuery.setParameter("pEmail", email);
         typedQuery.setParameter("pSenha", senha);
         
