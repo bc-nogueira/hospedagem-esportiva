@@ -13,7 +13,7 @@ import javax.servlet.http.HttpSession;
 public class LogoutServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
             throws ServletException, IOException {
 //        req.getSession().removeAttribute("usuarioLogado");
         // Como tem muitos dados salvos na sessão, melhor destruir tudo ao sair.

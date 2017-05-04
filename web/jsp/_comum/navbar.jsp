@@ -30,11 +30,9 @@
                         ${usuarioLogado.nome}
                     </a>!
                 </span>
-                
-                <form action="${pageContext.request.contextPath}/logout" method="POST">
-                    <input type="submit" class="btn btn-secondary btn-navbar" value="Deslogar" />
-                </form>
-                
+                    
+                <a href="${pageContext.request.contextPath}/logout"
+                   class="btn btn-secondary btn-navbar">Deslogar</a>
             </c:when>
         </c:choose>
         
