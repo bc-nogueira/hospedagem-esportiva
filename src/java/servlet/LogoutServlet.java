@@ -15,7 +15,9 @@ public class LogoutServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
             throws ServletException, IOException {
-        req.getSession().removeAttribute("usuarioLogado");
+//        req.getSession().removeAttribute("usuarioLogado");
+        // Como tem muitos dados salvos na sessão, melhor destruir tudo ao sair.
+        req.getSession().invalidate();
         
         HttpSession session = req.getSession();
         session.setAttribute("mensagemLogout", "Logout realizado com sucesso.");

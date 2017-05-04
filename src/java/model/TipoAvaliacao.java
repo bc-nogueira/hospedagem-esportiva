@@ -1,5 +1,5 @@
 package model;
 
 public enum TipoAvaliacao {
-    USUSARIO, HOSPEDAGEM, ESPORTE;
+    AMIGO, HOSPEDE, ANFITRIAO, PARTICIPA_SAIDA_ESPORTE, LEVA_SAIDA_ESPORTE;
 }

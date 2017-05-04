@@ -18,6 +18,47 @@ public class UsuarioDAO {
         em.close();
     }
     
+    public void atualiza(Usuario usuario) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        em.merge(usuario);
+        em.getTransaction().commit();
+        
+        em.close();
+    }
+    
+    public Usuario buscaPorId(Integer id) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        Usuario usuario = em.find(Usuario.class, id);
+        
+        em.close();
+        return usuario;
+    }
+    
+    public Usuario buscaPorEmail(String email) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        TypedQuery<Usuario> typedQuery = em.createNamedQuery("buscaPorEmail", Usuario.class);
+        typedQuery.setParameter("pEmail", email);
+        
+        Usuario usuario;
+        
+        if(typedQuery.getResultList().isEmpty()) {
+            usuario = null;
+        } else {
+            usuario = typedQuery.getSingleResult();
+        }
+        
+        em.getTransaction().commit();
+        em.close();
+        
+        return usuario;
+    }
+    
     public Usuario buscaPorEmailESenha(String email, String senha) {
         EntityManager em = new JpaUtil().getEntityManager();
         em.getTransaction().begin();

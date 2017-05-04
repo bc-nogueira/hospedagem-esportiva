@@ -24,7 +24,12 @@
                 <a class="btn btn-secondary btn-navbar" href="${pageContext.request.contextPath}/jsp/usuario/cadastro.jsp">Cadastrar</a>
             </c:when>
             <c:when test="${usuarioLogado != null}">
-                <span style="margin-top: 6px">Olá ${usuarioLogado.nome} ${usuarioLogado.sobrenome}!</span>
+                <span style="margin-top: 6px">
+                    Olá 
+                    <a href="${pageContext.request.contextPath}/jsp/usuario/index.jsp">
+                        ${usuarioLogado.nome} ${usuarioLogado.sobrenome}
+                    </a>!
+                </span>
                 
                 <form action="${pageContext.request.contextPath}/logout" method="POST">
                     <input type="submit" class="btn btn-secondary btn-navbar" value="Deslogar" />

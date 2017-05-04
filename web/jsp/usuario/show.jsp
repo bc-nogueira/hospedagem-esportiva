@@ -29,55 +29,62 @@
 
                     <div class="jumbotron">
                         <h1 class="display-4 d-flex justify-content-between align-items-center">
-                            Perfil do Usuário
-                            <a href="${pageContext.request.contextPath}/jsp/usuario/edit.jsp" class="btn btn-secondary">Editar</a>
+                            Visualizar Perfil de outro Usuário
+                            <a href="#" class="btn btn-secondary">Adicionar</a>
                         </h1>
                         <hr class="my-4"/>
                         <div class="row">
                             <div class="col-2"><b>Nome:</b></div>
-                            <div class="col">${usuarioLogado.nome}</div>
+                            <div class="col">${usuarioMostrar.nome}</div>
                             <div class="col-2"><b>Sobrenome:</b></div>
-                            <div class="col-4">${usuarioLogado.sobrenome}</div>
+                            <div class="col-4">${usuarioMostrar.sobrenome}</div>
                         </div>
                         <div class="row">
                             <div class="col-2"><b>Local de Moradia:</b></div>
-                            <div class="col-4">${usuarioLogado.localMoradia}</div>
+                            <div class="col-4">${usuarioMostrar.localMoradia}</div>
                             <div class="col-2"><b>Esporte Favorito:</b></div>
-                            <div class="col-4">${usuarioLogado.esporteFavorito}</div>
+                            <div class="col-4">${usuarioMostrar.esporteFavorito}</div>
                         </div>
                         <div class="row">
                             <div class="col-2"><b>E-mail:</b></div>
-                            <div class="col">${usuarioLogado.email}</div>
+                            <div class="col">${usuarioMostrar.email}</div>
                         </div>
                         <div class="row">
                             <div class="col-2"><b>Disposto a receber?</b></div>
                             <div class="col-4">
                                 <c:choose>
-                                    <c:when test="${usuarioLogado.dispostoReceber}">
+                                    <c:when test="${usuarioMostrar.dispostoReceber}">
                                         <span style="color: green">Sim</span>
                                     </c:when>
-                                    <c:when test="${!usuarioLogado.dispostoReceber}">
+                                    <c:when test="${!usuarioMostrar.dispostoReceber}">
                                         <span style="color: red">Não</span>
                                     </c:when>
                                 </c:choose>
                             </div>
-                            <c:if test="${usuarioLogado.dispostoReceber}">
+                            <c:if test="${usuarioMostrar.dispostoReceber}">
                                 <div class="col-2"><b>Quantos?</b></div>
-                                <div class="col-4">${usuarioLogado.quantReceber}</div>
+                                <div class="col-4">${usuarioMostrar.quantReceber}</div>
                             </c:if>
                         </div>
                         <hr/>
-                        <c:if test="${recebidasAmigos.size() > 0}">
+                        <c:if test="${recebidasAmigosUsuarioMostrar.size() > 0}">
                             <div class="row margin-bottom-20" id="media-notas-amigos">
                                 <div class="col-3"><h4>Média dos amigos:</h4></div>
                                 <div class="col">
-                                    <div class="rate-yo-read" data-rateyo-rating="${notaMediaAmigos}"></div>
+                                    <div class="rate-yo-read" data-rateyo-rating="${notaMediaAmigosUsuarioMostrar}"></div>
                                 </div>
                             </div>
-                            <c:forEach var="avaliacao" items="${recebidasAmigos}">
+                            <c:forEach var="avaliacao" items="${recebidasAmigosUsuarioMostrar}">
                                 <div class="card text-center margin-bottom-20" id="avaliacoes-amigos">
                                     <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                        <c:choose>
+                                            <c:when test="${avaliacao.avaliador.id != usuarioLogado.id}">
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                            </c:when>
+                                            <c:when test="${avaliacao.avaliador.id == usuarioLogado.id}">
+                                                ${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}
+                                            </c:when>
+                                        </c:choose>
                                     </div>
                                     <div class="card-block">
                                         <h4 class="card-title">
@@ -94,17 +101,24 @@
                                 </div>
                             </c:forEach>
                         </c:if>
-                        <c:if test="${recebidasHospede.size() > 0}">
+                        <c:if test="${recebidasHospedeUsuarioMostrar.size() > 0}">
                             <div class="row margin-bottom-20" id="media-notas-hospede">
                                 <div class="col-3"><h4>Média Hóspede:</h4></div>
                                 <div class="col">
-                                    <div class="rate-yo-read" data-rateyo-rating="${notaMediaHospede}"></div>
+                                    <div class="rate-yo-read" data-rateyo-rating="${notaMediaHospedeUsuarioMostrar}"></div>
                                 </div>
                             </div>
-                            <c:forEach var="avaliacao" items="${recebidasHospede}">
+                            <c:forEach var="avaliacao" items="${recebidasHospedeUsuarioMostrar}">
                                 <div class="card text-center margin-bottom-20" id="avaliacoes-hospede">
                                     <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                        <c:choose>
+                                            <c:when test="${avaliacao.avaliador.id != usuarioLogado.id}">
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                            </c:when>
+                                            <c:when test="${avaliacao.avaliador.id == usuarioLogado.id}">
+                                                ${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}
+                                            </c:when>
+                                        </c:choose>
                                     </div>
                                     <div class="card-block">
                                         <h4 class="card-title">
@@ -121,17 +135,24 @@
                                 </div>
                             </c:forEach>    
                         </c:if>
-                        <c:if test="${recebidasAnfitriao.size() > 0}">
+                        <c:if test="${recebidasAnfitriaoUsuarioMostrar.size() > 0}">
                             <div class="row margin-bottom-20" id="media-notas-anfitriao">
                                 <div class="col-3"><h4>Média Anfitrião:</h4></div>
                                 <div class="col">
-                                    <div class="rate-yo-read" data-rateyo-rating="${notaMediaAnfitriao}"></div>
+                                    <div class="rate-yo-read" data-rateyo-rating="${notaMediaAnfitriaoUsuarioMostrar}"></div>
                                 </div>
                             </div>
-                            <c:forEach var="avaliacao" items="${recebidasAnfitriao}">
+                            <c:forEach var="avaliacao" items="${recebidasAnfitriaoUsuarioMostrar}">
                                 <div class="card text-center margin-bottom-20" id="avaliacoes-anfitriao">
                                     <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                        <c:choose>
+                                            <c:when test="${avaliacao.avaliador.id != usuarioLogado.id}">
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                            </c:when>
+                                            <c:when test="${avaliacao.avaliador.id == usuarioLogado.id}">
+                                                ${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}
+                                            </c:when>
+                                        </c:choose>
                                     </div>
                                     <div class="card-block">
                                         <h4 class="card-title">
@@ -148,17 +169,24 @@
                                 </div>
                             </c:forEach>    
                         </c:if>
-                        <c:if test="${recebidasLevaEsporte.size() > 0}">
+                        <c:if test="${recebidasLevaEsporteUsuarioMostrar.size() > 0}">
                             <div class="row margin-bottom-20" id="media-notas-leva">
                                 <div class="col-3"><h4>Média ao levar para saída de esporte:</h4></div>
                                 <div class="col">
-                                    <div class="rate-yo-read" data-rateyo-rating="${notaMediaLevaEsporte}"></div>
+                                    <div class="rate-yo-read" data-rateyo-rating="${notaMediaLevaEsporteUsuarioMostrar}"></div>
                                 </div>
                             </div>
-                            <c:forEach var="avaliacao" items="${recebidasLevaEsporte}">
+                            <c:forEach var="avaliacao" items="${recebidasLevaEsporteUsuarioMostrar}">
                                 <div class="card text-center margin-bottom-20" id="avaliacoes-leva">
                                     <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                        <c:choose>
+                                            <c:when test="${avaliacao.avaliador.id != usuarioLogado.id}">
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                            </c:when>
+                                            <c:when test="${avaliacao.avaliador.id == usuarioLogado.id}">
+                                                ${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}
+                                            </c:when>
+                                        </c:choose>
                                     </div>
                                     <div class="card-block">
                                         <h4 class="card-title">
@@ -175,17 +203,24 @@
                                 </div>
                             </c:forEach>    
                         </c:if>
-                        <c:if test="${recebidasParticipaEsporte.size() > 0}">
+                        <c:if test="${recebidasParticipaEsporteUsuarioMostrar.size() > 0}">
                             <div class="row margin-bottom-20" id="media-notas-participa">
                                 <div class="col-3"><h4>Média ao participar de saída de esporte:</h4></div>
                                 <div class="col">
-                                    <div class="rate-yo-read" data-rateyo-rating="${notaMediaParticipaEsporte}"></div>
+                                    <div class="rate-yo-read" data-rateyo-rating="${notaMediaParticipaEsporteUsuarioMostrar}"></div>
                                 </div>
                             </div>
-                            <c:forEach var="avaliacao" items="${recebidasParticipaEsporte}">
+                            <c:forEach var="avaliacao" items="${recebidasParticipaEsporteUsuarioMostrar}">
                                 <div class="card text-center margin-bottom-20" id="avaliacoes-participa">
                                     <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                        <c:choose>
+                                            <c:when test="${avaliacao.avaliador.id != usuarioLogado.id}">
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}</a>
+                                            </c:when>
+                                            <c:when test="${avaliacao.avaliador.id == usuarioLogado.id}">
+                                                ${avaliacao.avaliador.nome} ${avaliacao.avaliador.sobrenome}
+                                            </c:when>
+                                        </c:choose>
                                     </div>
                                     <div class="card-block">
                                         <h4 class="card-title">
@@ -203,6 +238,17 @@
                             </c:forEach>    
                         </c:if>
                     </div>
+                    <c:remove var="usuarioMostrar" scope="session"/>
+                    <c:remove var="recebidasAmigosUsuarioMostrar" scope="session"/>
+                    <c:remove var="notaMediaAmigosUsuarioMostrar" scope="session"/>
+                    <c:remove var="recebidasHospedeUsuarioMostrar" scope="session"/>
+                    <c:remove var="notaMediaHospedeUsuarioMostrar" scope="session"/>
+                    <c:remove var="recebidasAnfitriaoUsuarioMostrar" scope="session"/>
+                    <c:remove var="notaMediaAnfitriaoUsuarioMostrar" scope="session"/>
+                    <c:remove var="recebidasLevaEsporteUsuarioMostrar" scope="session"/>
+                    <c:remove var="notaMediaLevaEsporteUsuarioMostrar" scope="session"/>
+                    <c:remove var="recebidasParticipaEsporteUsuarioMostrar" scope="session"/>
+                    <c:remove var="notaMediaParticipaEsporteUsuarioMostrar" scope="session"/>
                 </c:when>
                 <c:when test="${usuarioLogado == null}">
                     <div class="alert alert-danger">

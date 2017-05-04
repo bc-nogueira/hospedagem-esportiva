@@ -8,7 +8,7 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilo.css"/>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/usuario/cadastro.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/app.js"></script>
     </head>
     <body>
         <c:import url="../_comum/navbar.jsp"/>
@@ -29,8 +29,7 @@
                 </div>
             </c:if>
             
-            <form action="${pageContext.request.contextPath}/executa" method="POST">
-                <input type="hidden" name="acao" value="NovoUsuario"/>
+            <form action="${pageContext.request.contextPath}/novoUsuario" method="POST">
                 <div class="form-group">
                     <label for="nome">Nome:</label> 
                     <input type="text" class="form-control" id="nome" name="nome"/><br/>
@@ -69,9 +68,4 @@
             </form>
         </div>
     </body>
-    
-<!--
-    private Boolean dispostoReceber;
-    private Integer quantReceber;
--->
 </html>

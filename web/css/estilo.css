@@ -1,3 +1,7 @@
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
 .container-principal {
     margin-top: 20px;
     margin-bottom: 20px;
@@ -6,4 +10,12 @@
 .btn-navbar {
     margin-left: 10px!important;
     margin-right: 10px!important;
+}
+
+#media-notas-amigos, #media-notas-hospede, #media-notas-anfitriao, #media-notas-leva, #media-notas-participa {
+    cursor: pointer;
+}
+
+#avaliacoes-amigos, #avaliacoes-hospede, #avaliacoes-anfitriao, #avaliacoes-leva, #avaliacoes-participa {
+    display: none;
 }
