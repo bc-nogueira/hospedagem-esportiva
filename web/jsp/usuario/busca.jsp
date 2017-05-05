@@ -23,12 +23,18 @@
                             },
                             success : function(responseJson) {
                                 $("#resultado").empty();
-                                var $table = $("<table class='table'>").appendTo($("#resultado"));
+                                var $table = $("<table class='table'>").appendTo($("#resultado"))
+                                        .append($("<thead class='thead-default'>")
+                                            .append($("<tr>")
+                                                .append($("<th>").text("Nome"))
+                                                .append($("<th>").text("E-mail"))
+                                                .append($("<th>").text(""))));
                                 $.each(responseJson, function(index, usuario) {
-                                    debugger;
-                                    $("<tr>").appendTo($table)
-                                        .append($("<td>").text(usuario.nome))
-                                        .append($("<td>").text(usuario.email));
+                                    $("<tbody>").appendTo($table)
+                                        .append($("<tr>")
+                                            .append($("<td>").text(usuario.nome))
+                                            .append($("<td>").text(usuario.email))
+                                            .append($("<a href='${pageContext.request.contextPath}/mostraUsuario?id=" + usuario.id + "'>Ver</a>")));
                                 });
                                 },
                             error: function(e){
