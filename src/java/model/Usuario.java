@@ -15,6 +15,9 @@ import javax.persistence.OneToMany;
     @NamedQuery(name = "buscaPorEmail",
             query = "select u from Usuario u " + 
                     "where u.email = :pEmail"),
+    @NamedQuery(name = "buscaPorNomeEEmailLike",
+            query = "select u from Usuario u " + 
+                    "where u.nome like :pNome or u.email like :pEmail"),
     @NamedQuery(name = "buscaPorEmailESenha",
             query = "select u from Usuario u " + 
                     "where u.email = :pEmail and u.senha = :pSenha")
@@ -36,10 +39,10 @@ public class Usuario {
     @Column(nullable = false)
     private String senha;
     
-    @OneToMany(mappedBy = "avaliador")
-    private List<Avaliacao> avaliacoesFeitas;
-    @OneToMany(mappedBy = "avaliado")
-    private List<Avaliacao> avaliacoesRecebidas;
+//    @OneToMany(mappedBy = "avaliador")
+//    private List<Avaliacao> avaliacoesFeitas;
+//    @OneToMany(mappedBy = "avaliado")
+//    private List<Avaliacao> avaliacoesRecebidas;
     
     public Integer getId() {
         return id;
@@ -105,20 +108,20 @@ public class Usuario {
         this.senha = senha;
     }
 
-    public List<Avaliacao> getAvaliacoesFeitas() {
-        return avaliacoesFeitas;
-    }
-
-    public void setAvaliacoesFeitas(List<Avaliacao> avaliacoesFeitas) {
-        this.avaliacoesFeitas = avaliacoesFeitas;
-    }
-
-    public List<Avaliacao> getAvaliacoesRecebidas() {
-        return avaliacoesRecebidas;
-    }
-
-    public void setAvaliacoesRecebidas(List<Avaliacao> avaliacoesRecebidas) {
-        this.avaliacoesRecebidas = avaliacoesRecebidas;
-    }
+//    public List<Avaliacao> getAvaliacoesFeitas() {
+//        return avaliacoesFeitas;
+//    }
+//
+//    public void setAvaliacoesFeitas(List<Avaliacao> avaliacoesFeitas) {
+//        this.avaliacoesFeitas = avaliacoesFeitas;
+//    }
+//
+//    public List<Avaliacao> getAvaliacoesRecebidas() {
+//        return avaliacoesRecebidas;
+//    }
+//
+//    public void setAvaliacoesRecebidas(List<Avaliacao> avaliacoesRecebidas) {
+//        this.avaliacoesRecebidas = avaliacoesRecebidas;
+//    }
     
 }

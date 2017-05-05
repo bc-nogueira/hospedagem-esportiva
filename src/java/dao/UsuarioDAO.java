@@ -1,5 +1,6 @@
 package dao;
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
@@ -52,6 +53,22 @@ public class UsuarioDAO {
         } else {
             usuario = typedQuery.getSingleResult();
         }
+        
+        em.getTransaction().commit();
+        em.close();
+        
+        return usuario;
+    }
+    
+    public List<Usuario> buscaPorNomeEEmailLike(String nome, String email) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        TypedQuery<Usuario> typedQuery = em.createNamedQuery("buscaPorNomeEEmailLike", Usuario.class);
+        typedQuery.setParameter("pNome", "%"+nome+"%");
+        typedQuery.setParameter("pEmail", "%"+email+"%");
+        
+        List<Usuario> usuario = typedQuery.getResultList();
         
         em.getTransaction().commit();
         em.close();
