@@ -40,10 +40,14 @@
                             <div class="col-4">${usuarioMostrar.email}</div>
                         </div>
                         <div class="row">
-                            <div class="col-2"><b>Local de Moradia:</b></div>
-                            <div class="col-4">${usuarioMostrar.localMoradia}</div>
+                            <div class="col-2"><b>Cidade de Moradia:</b></div>
+                            <div class="col-4">${usuarioMostrar.cidadeMoradia}</div>
+                            <div class="col-2"><b>País de Moradia:</b></div>
+                            <div class="col-4">${usuarioMostrar.paisMoradia}</div>
+                        </div>
+                        <div class="row">
                             <div class="col-2"><b>Esporte Favorito:</b></div>
-                            <div class="col-4">${usuarioMostrar.esporteFavorito}</div>
+                            <div class="col">${usuarioMostrar.esporteFavorito}</div>
                         </div>
                         <div class="row">
                             <div class="col-2"><b>Disposto a receber?</b></div>

@@ -1,6 +1,5 @@
 package model;
 
-import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -8,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 
 @Entity
 @NamedQueries({
@@ -29,7 +27,9 @@ public class Usuario {
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false)
-    private String localMoradia;
+    private String cidadeMoradia;
+    @Column(nullable = false)
+    private String paisMoradia;
     @Column(nullable = false)
     private String esporteFavorito;
     private Boolean dispostoReceber;
@@ -60,12 +60,20 @@ public class Usuario {
         this.nome = nome;
     }
 
-    public String getLocalMoradia() {
-        return localMoradia;
+    public String getCidadeMoradia() {
+        return cidadeMoradia;
     }
 
-    public void setLocalMoradia(String localMoradia) {
-        this.localMoradia = localMoradia;
+    public void setCidadeMoradia(String cidadeMoradia) {
+        this.cidadeMoradia = cidadeMoradia;
+    }
+
+    public String getPaisMoradia() {
+        return paisMoradia;
+    }
+
+    public void setPaisMoradia(String paisMoradia) {
+        this.paisMoradia = paisMoradia;
     }
 
     public String getEsporteFavorito() {

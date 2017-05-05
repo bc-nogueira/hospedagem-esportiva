@@ -13,7 +13,7 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/jsp/usuario/busca.jsp">Buscar usuário</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Quero viajar</a>
+                    <a class="nav-link" href="${pageContext.request.contextPath}/jsp/viagem/solicitar.jsp">Quero viajar</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Praticar esportes</a>

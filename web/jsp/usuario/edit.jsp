@@ -40,9 +40,14 @@
                                    name="nome" value="${usuarioLogado.nome}"/><br/>
                         </div>
                         <div class="form-group">
-                            <label for="localMoradia">Local de moradia:</label> 
-                            <input type="text" class="form-control" id="localMoradia" 
-                                   name="localMoradia"  value="${usuarioLogado.localMoradia}"/><br/>
+                            <label for="cidadeMoradia">Cidade de moradia:</label> 
+                            <input type="text" class="form-control" id="cidadeMoradia" 
+                                   name="cidadeMoradia"  value="${usuarioLogado.cidadeMoradia}"/><br/>
+                        </div>
+                        <div class="form-group">
+                            <label for="paisMoradia">País de moradia:</label> 
+                            <input type="text" class="form-control" id="paisMoradia" 
+                                   name="paisMoradia"  value="${usuarioLogado.paisMoradia}"/><br/>
                         </div>
                         <div class="form-group">
                             <label for="esporteFavorito">Esporte Favorito:</label> 
