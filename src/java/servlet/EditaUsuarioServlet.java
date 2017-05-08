@@ -28,11 +28,17 @@ public class EditaUsuarioServlet extends HttpServlet {
             dispatcher.forward(req, resp);
         }
         
-        Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
-        usuario = this.populaUsuario(req, usuario.getEmail());
+//        Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
+//        usuario = this.populaUsuario(req, usuario.getEmail());
         
+        
+        Usuario usuarioAntigo = (Usuario) session.getAttribute("usuarioLogado");
+        
+        
+        
+        Usuario usuario = new Usuario();
         try {
-            new UsuarioDAO().atualiza(usuario);
+            usuario = new UsuarioDAO().atualiza(usuarioAntigo, req);
         } catch(PersistenceException ex) {
             session.setAttribute("mensagem", "E-mail já está sendo utilizado.");
             RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/usuario/edit.jsp");

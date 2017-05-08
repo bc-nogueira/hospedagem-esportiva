@@ -4,6 +4,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+import javax.servlet.http.HttpServletRequest;
 import model.Usuario;
 import util.JpaUtil;
 
@@ -19,14 +20,31 @@ public class UsuarioDAO {
         em.close();
     }
     
-    public void atualiza(Usuario usuario) {
+    public Usuario atualiza(Usuario usuarioAntigo, HttpServletRequest req) {
         EntityManager em = new JpaUtil().getEntityManager();
         em.getTransaction().begin();
         
-        em.merge(usuario);
-        em.getTransaction().commit();
+        Usuario usuario = em.find(Usuario.class, usuarioAntigo.getId());
         
+        usuario.setNome(req.getParameter("nome"));
+        usuario.setCidadeMoradia(req.getParameter("cidadeMoradia"));
+        usuario.setPaisMoradia(req.getParameter("paisMoradia"));
+        usuario.setEsporteFavorito(req.getParameter("esporteFavorito"));
+        
+        if(req.getParameter("dispostoReceber") != null) {
+            usuario.setDispostoReceber(Boolean.TRUE);
+            usuario.setQuantReceber(Integer.parseInt(req.getParameter("quantReceber")));
+        } else {
+            usuario.setDispostoReceber(Boolean.FALSE);
+        }
+        
+        usuario.setEmail(req.getParameter("email"));
+        
+//        em.merge(usuario);
+        em.getTransaction().commit();
         em.close();
+        
+        return usuario;
     }
     
     public Usuario buscaPorId(Integer id) {
