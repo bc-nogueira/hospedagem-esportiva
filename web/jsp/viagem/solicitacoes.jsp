@@ -26,6 +26,13 @@
                         </div>
                     </c:if>
                     
+                    <c:if test="${mensagemExclusaoSolicitacao != null}">
+                        <div class="alert alert-danger alert-timer">
+                            ${mensagemExclusaoSolicitacao}
+                            <c:remove var="mensagemExclusaoSolicitacao" scope="session" />
+                        </div>
+                    </c:if>
+                    
                     <div class="card">
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs" role="tablist">
@@ -60,6 +67,8 @@
                                                         <th>Pessoas</th>
                                                         <th>Status</th>
                                                         <th>Anfitrião</th>
+                                                        <th></th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -73,6 +82,8 @@
                                                             <td>${solicitacaoFeita.quantHospedes}</td>
                                                             <td>${solicitacaoFeita.statusViagem}</td>
                                                             <td>${solicitacaoFeita.anfitriao.nome}</td>
+                                                            <td><a href="${pageContext.request.contextPath}/excluirSolicitacao?id=${solicitacaoFeita.id}">Excluir</a></td>
+                                                            <td></td>
                                                         </tr>
                                                     </c:forEach>
                                                 </tbody>

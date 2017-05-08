@@ -65,4 +65,16 @@ public class ViagemDAO {
         
         return viagens;
     }
+    
+    public void deletaViagem(Integer id) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        Viagem viagem = em.find(Viagem.class, id);
+        
+        em.remove(viagem);
+        
+        em.getTransaction().commit();
+        em.close();
+    }
 }
