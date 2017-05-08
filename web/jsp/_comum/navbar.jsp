@@ -5,7 +5,7 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
                 <a class="nav-link" href="${pageContext.request.contextPath}">Home<span class="sr-only">(current)</span></a>
             </li>
             <c:if test="${usuarioLogado != null}">
@@ -14,6 +14,9 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="${pageContext.request.contextPath}/jsp/viagem/solicitar.jsp">Quero viajar</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/buscaSolicitacoes">Solicitações</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Praticar esportes</a>

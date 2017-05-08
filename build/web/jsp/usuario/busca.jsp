@@ -9,8 +9,6 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilo.css"/>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/app.js"></script>
-        <script type="text/javascript" src="${pageContext.request.contextPath}/js/busca.js"></script>
-        
         
         <script type="text/javascript">
             $(document).ready(function() {
@@ -36,7 +34,7 @@
                                             .append($("<td>").text(usuario.email))
                                             .append($("<a href='${pageContext.request.contextPath}/mostraUsuario?id=" + usuario.id + "'>Ver</a>")));
                                 });
-                                },
+                            },
                             error: function(e){
                                 alert(JSON.stringify(e))
                             }
@@ -69,8 +67,7 @@
                     <strong>Resultados:</strong>
                     <div id="resultado">
                     </div>
-                    
-                    
+                   
                 </c:when>
                 <c:when test="${usuarioLogado == null}">
                     <div class="alert alert-danger">

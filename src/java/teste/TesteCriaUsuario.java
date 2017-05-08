@@ -35,12 +35,23 @@ public class TesteCriaUsuario {
         usuario3.setEmail("gabriel@gmail.com");
         usuario3.setSenha("1234");
         
+        Usuario usuario4 = new Usuario();
+        usuario4.setNome("Renan Vieira");
+        usuario4.setCidadeMoradia("Maricá");
+        usuario4.setPaisMoradia("Brasil");
+        usuario4.setEsporteFavorito("Futebol");
+        usuario4.setDispostoReceber(Boolean.TRUE);
+        usuario4.setQuantReceber(2);
+        usuario4.setEmail("renan@gmail.com");
+        usuario4.setSenha("1234");
+        
         EntityManager em = new JpaUtil().getEntityManager();
         em.getTransaction().begin();
         
         em.persist(usuario1);
         em.persist(usuario2);
         em.persist(usuario3);
+        em.persist(usuario4);
         
         em.getTransaction().commit();
         em.close();

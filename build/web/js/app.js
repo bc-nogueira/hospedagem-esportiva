@@ -34,4 +34,21 @@ $(document).ready(function() {
     $("#media-notas-participa").on("click", function () {
        $("#avaliacoes-participa").slideToggle()();
     });
+    
+    // Utilizado nos forms com calendário
+    var configuracaoDatepicker = {
+        dateFormat: 'dd/mm/yy',
+        dayNames: ['Domingo','Segunda','Terça','Quarta','Quinta','Sexta','Sábado'],
+        dayNamesMin: ['D','S','T','Q','Q','S','S','D'],
+        dayNamesShort: ['Dom','Seg','Ter','Qua','Qui','Sex','Sáb','Dom'],
+        monthNames: ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'],
+        monthNamesShort: ['Jan','Fev','Mar','Abr','Mai','Jun','Jul','Ago','Set','Out','Nov','Dez'],
+        nextText: 'Próximo',
+        prevText: 'Anterior'
+    };
+    
+    $("#chegada").datepicker(configuracaoDatepicker);
+    $("#chegada").mask('00/00/0000');
+    $("#saida").datepicker(configuracaoDatepicker);
+    $("#saida").mask('00/00/0000');
 });

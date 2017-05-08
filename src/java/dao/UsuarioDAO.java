@@ -75,7 +75,7 @@ public class UsuarioDAO {
         
         return usuario;
     }
-    
+
     public Usuario buscaPorEmailESenha(String email, String senha) {
         EntityManager em = new JpaUtil().getEntityManager();
         em.getTransaction().begin();
@@ -98,4 +98,21 @@ public class UsuarioDAO {
         return usuario;
     }
     
+    public List<Usuario> buscaPorCidadePaisQuant(String cidade, String pais, Integer quantidade) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        TypedQuery<Usuario> typedQuery = em.createNamedQuery("buscaPorCidadePaisQuant", Usuario.class);
+        typedQuery.setParameter("pCidade", cidade);
+        typedQuery.setParameter("pPais", pais);
+        typedQuery.setParameter("pQuantidade", quantidade);
+        
+        List<Usuario> usuarios = typedQuery.getResultList();
+        
+        em.getTransaction().commit();
+        em.close();
+        
+        return usuarios;
+    }
+            
 }

@@ -4,26 +4,30 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Hospedagem Esportiva</title>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilo.css"/>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/app.js"></script>
-        <title>Hospedagem Hoteleira</title>
     </head>
     <body>
-        <c:import url="jsp/_comum/navbar.jsp"/>
+        <c:import url="../_comum/navbar.jsp"/>
         
         <div class="container container-principal">
-            
-            <c:if test="${mensagemLogout != null}">
-                <div class="alert alert-success alert-timer">
-                    ${mensagemLogout}
-                    <c:remove var="mensagemLogout" scope="session" />
-                </div>
-            </c:if>
-            
-            <h1 class="text-center">Bem-vindo ao sistema da Hospedagem Esportiva!</h1>
+            <c:choose>
+                <c:when test="${usuarioLogado != null}">
+                    <h1>Solicitar hospedagem</h1>
+                    
+                    
+                    
+                    
+                </c:when>
+                <c:when test="${usuarioLogado == null}">
+                    <div class="alert alert-danger">
+                        Você não está logado.
+                    </div>
+                </c:when>
+            </c:choose>
         </div>
-        <c:import url="jsp/_comum/footer.jsp"/>
     </body>
 </html>

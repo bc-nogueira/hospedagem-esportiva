@@ -11,14 +11,18 @@ import javax.persistence.NamedQuery;
 @Entity
 @NamedQueries({
     @NamedQuery(name = "buscaPorEmail",
-            query = "select u from Usuario u " + 
-                    "where u.email = :pEmail"),
+            query = "select u from Usuario u "
+                    + "where u.email = :pEmail"),
     @NamedQuery(name = "buscaPorNomeEEmailLike",
-            query = "select u from Usuario u " + 
-                    "where u.nome like :pNome or u.email like :pEmail"),
+            query = "select u from Usuario u "
+                    + "where u.nome like :pNome or u.email like :pEmail"),
     @NamedQuery(name = "buscaPorEmailESenha",
-            query = "select u from Usuario u " + 
-                    "where u.email = :pEmail and u.senha = :pSenha")
+            query = "select u from Usuario u "
+                    + "where u.email = :pEmail and u.senha = :pSenha"),
+    @NamedQuery(name = "buscaPorCidadePaisQuant",
+            query = "select u from Usuario u "
+                    + "where u.cidadeMoradia = :pCidade and u.paisMoradia = :pPais "
+                    + "and u.quantReceber >= :pQuantidade and u.dispostoReceber = true")
 })
 public class Usuario {
     @Id

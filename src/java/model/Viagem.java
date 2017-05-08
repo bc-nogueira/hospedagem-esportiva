@@ -1,5 +1,6 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,10 +10,23 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 @Entity
+@NamedQueries({
+    @NamedQuery(name = "buscaViagemPorDatas",
+            query = "select v from Viagem v "
+                    + "where v.dataInicio <= :pDataFim and v.dataFim >= :pDataInicio"),
+    @NamedQuery(name = "buscaFeitas",
+            query = "select v from Viagem v " + 
+                    "where v.hospede = :pHospede"),
+    @NamedQuery(name = "buscaRecebidas",
+            query = "select v from Viagem v " + 
+                    "where v.anfitriao = :pAnfitriao")
+})
 public class Viagem {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -110,4 +124,13 @@ public class Viagem {
         this.anfitriao = anfitriao;
     }
     
+    public String dataInicioFormatada() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        return formato.format(this.getDataInicio().getTime());
+    }
+    
+    public String dataFimFormatada() {
+        SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
+        return formato.format(this.getDataFim().getTime());
+    }
 }

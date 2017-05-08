@@ -86,10 +86,9 @@
                                         <p class="card-text">
                                             ${avaliacao.descricao}
                                         </p>
-                                        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                                     </div>
                                     <div class="card-footer text-muted">
-                                        11/10/2015 <span style="color: red">Colocar data do BD</span>
+                                        ${avaliacao.horaFormatada()}
                                     </div>
                                 </div>
                             </c:forEach>
@@ -113,10 +112,9 @@
                                         <p class="card-text">
                                             ${avaliacao.descricao}
                                         </p>
-                                        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                                     </div>
                                     <div class="card-footer text-muted">
-                                        11/10/2015 <span style="color: red">Colocar data do BD</span>
+                                        ${avaliacao.horaFormatada()}
                                     </div>
                                 </div>
                             </c:forEach>    
@@ -140,10 +138,9 @@
                                         <p class="card-text">
                                             ${avaliacao.descricao}
                                         </p>
-                                        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                                     </div>
                                     <div class="card-footer text-muted">
-                                        11/10/2015 <span style="color: red">Colocar data do BD</span>
+                                        ${avaliacao.horaFormatada()}
                                     </div>
                                 </div>
                             </c:forEach>    
@@ -167,10 +164,9 @@
                                         <p class="card-text">
                                             ${avaliacao.descricao}
                                         </p>
-                                        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                                     </div>
                                     <div class="card-footer text-muted">
-                                        11/10/2015 <span style="color: red">Colocar data do BD</span>
+                                        ${avaliacao.horaFormatada()}
                                     </div>
                                 </div>
                             </c:forEach>    
@@ -194,10 +190,9 @@
                                         <p class="card-text">
                                             ${avaliacao.descricao}
                                         </p>
-                                        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                                     </div>
                                     <div class="card-footer text-muted">
-                                        11/10/2015 <span style="color: red">Colocar data do BD</span>
+                                        ${avaliacao.horaFormatada()}
                                     </div>
                                 </div>
                             </c:forEach>    

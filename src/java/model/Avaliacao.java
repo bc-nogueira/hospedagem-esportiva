@@ -1,5 +1,6 @@
 package model;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -29,7 +30,7 @@ public class Avaliacao {
     private TipoAvaliacao tipoAvaliacao;
     @Temporal(TemporalType.TIMESTAMP)
     @Column(nullable = false)
-    private Calendar dataAvaliacao; //ou Date?
+    private Calendar dataAvaliacao;
     private Double nota;
     @Column(nullable = false)
     private String descricao;
@@ -95,4 +96,8 @@ public class Avaliacao {
         this.avaliado = avaliado;
     }
     
+    public String horaFormatada() {
+        SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss, dd/MM/yyyy");
+        return formato.format(this.getDataAvaliacao().getTime());
+    }
 }

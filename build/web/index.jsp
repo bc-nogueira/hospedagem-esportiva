@@ -24,5 +24,6 @@
             
             <h1 class="text-center">Bem-vindo ao sistema da Hospedagem Esportiva!</h1>
         </div>
+        <c:import url="jsp/_comum/footer.jsp"/>
     </body>
 </html>
