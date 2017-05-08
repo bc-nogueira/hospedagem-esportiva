@@ -38,7 +38,7 @@ public class EditaSenhaServlet extends HttpServlet {
         
         usuario.setSenha(req.getParameter("senhaNova"));
         
-        new UsuarioDAO().atualiza(usuario);
+        new UsuarioDAO().atualizaSenha(usuario);
         
         session.setAttribute("mensagem", "Atualização de senha realizada com sucesso.");
         session.setAttribute("usuarioLogado", usuario);

@@ -5,6 +5,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceException;
 import javax.persistence.TypedQuery;
+import model.StatusViagem;
 import model.Usuario;
 import model.Viagem;
 import util.JpaUtil;
@@ -73,6 +74,18 @@ public class ViagemDAO {
         Viagem viagem = em.find(Viagem.class, id);
         
         em.remove(viagem);
+        
+        em.getTransaction().commit();
+        em.close();
+    }
+    
+    public void atualizaStatusViagem(Integer id, StatusViagem status) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        Viagem viagem = em.find(Viagem.class, id);
+        
+        viagem.setStatusViagem(status);
         
         em.getTransaction().commit();
         em.close();

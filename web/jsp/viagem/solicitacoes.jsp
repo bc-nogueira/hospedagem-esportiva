@@ -19,17 +19,11 @@
                 <c:when test="${usuarioLogado != null}">
                     <h1>Solicitações</h1>
                     
-                    <c:if test="${mensagemCriacaoSolicitacao != null}">
-                        <div class="alert alert-success alert-timer">
-                            ${mensagemCriacaoSolicitacao}
-                            <c:remove var="mensagemCriacaoSolicitacao" scope="session" />
-                        </div>
-                    </c:if>
-                    
-                    <c:if test="${mensagemExclusaoSolicitacao != null}">
-                        <div class="alert alert-danger alert-timer">
-                            ${mensagemExclusaoSolicitacao}
-                            <c:remove var="mensagemExclusaoSolicitacao" scope="session" />
+                    <c:if test="${mensagemSolicitacao != null}">
+                        <div class="alert alert-${classeAlert} alert-timer">
+                            ${mensagemSolicitacao}
+                            <c:remove var="classeAlert" scope="session" />
+                            <c:remove var="mensagemSolicitacao" scope="session" />
                         </div>
                     </c:if>
                     
@@ -83,7 +77,11 @@
                                                             <td>${solicitacaoFeita.statusViagem}</td>
                                                             <td>${solicitacaoFeita.anfitriao.nome}</td>
                                                             <td><a href="${pageContext.request.contextPath}/excluirSolicitacao?id=${solicitacaoFeita.id}">Excluir</a></td>
-                                                            <td></td>
+                                                            <td>
+                                                                <c:if test="${solicitacaoFeita.statusViagem == 'APROVADA'}">
+                                                                    <a href="${pageContext.request.contextPath}/confirmaSolicitacao?id=${solicitacaoFeita.id}">Confirmar</a>
+                                                                </c:if>
+                                                            </td>
                                                         </tr>
                                                     </c:forEach>
                                                 </tbody>
@@ -111,6 +109,8 @@
                                                             <th>Pessoas</th>
                                                             <th>Status</th>
                                                             <th>Hóspede</th>
+                                                            <th></th>
+                                                            <th></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -124,6 +124,16 @@
                                                                 <td>${solicitacaoRecebida.quantHospedes}</td>
                                                                 <td>${solicitacaoRecebida.statusViagem}</td>
                                                                 <td>${solicitacaoRecebida.hospede.nome}</td>
+                                                                <td>
+                                                                    <c:if test="${solicitacaoRecebida.statusViagem == 'PENDENTE'}">
+                                                                        <a href="${pageContext.request.contextPath}/aprovaSolicitacao?id=${solicitacaoRecebida.id}">Aprovar</a>
+                                                                    </c:if>
+                                                                </td>
+                                                                <td>
+                                                                    <c:if test="${solicitacaoRecebida.statusViagem == 'PENDENTE'}">
+                                                                        <a href="${pageContext.request.contextPath}/rejeitaSolicitacao?id=${solicitacaoRecebida.id}">Rejeitar</a>
+                                                                    </c:if>
+                                                                </td>
                                                             </tr>
                                                         </c:forEach>
                                                     </tbody>

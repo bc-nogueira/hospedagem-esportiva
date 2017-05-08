@@ -20,7 +20,8 @@ public class ExcluirSolicitacaoViagemServlet extends HttpServlet {
         new ViagemDAO().deletaViagem(id);
         
         HttpSession session = req.getSession();
-        session.setAttribute("mensagemExclusaoSolicitacao", "Solicitação removida com sucesso!");
+        session.setAttribute("classeAlert", "danger");
+        session.setAttribute("mensagemSolicitacao", "Solicitação removida com sucesso!");
         
         RequestDispatcher dispatcher = req.getRequestDispatcher("buscaSolicitacoes");
         dispatcher.forward(req, resp);

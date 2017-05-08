@@ -28,13 +28,7 @@ public class EditaUsuarioServlet extends HttpServlet {
             dispatcher.forward(req, resp);
         }
         
-//        Usuario usuario = (Usuario) session.getAttribute("usuarioLogado");
-//        usuario = this.populaUsuario(req, usuario.getEmail());
-        
-        
         Usuario usuarioAntigo = (Usuario) session.getAttribute("usuarioLogado");
-        
-        
         
         Usuario usuario = new Usuario();
         try {

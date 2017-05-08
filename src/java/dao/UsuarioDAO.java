@@ -40,12 +40,22 @@ public class UsuarioDAO {
         
         usuario.setEmail(req.getParameter("email"));
         
-//        em.merge(usuario);
         em.getTransaction().commit();
         em.close();
         
         return usuario;
     }
+    
+    public void atualizaSenha(Usuario usuario) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        em.merge(usuario);
+        em.getTransaction().commit();
+        
+        em.close();
+    }
+
     
     public Usuario buscaPorId(Integer id) {
         EntityManager em = new JpaUtil().getEntityManager();
