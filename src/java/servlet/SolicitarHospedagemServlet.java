@@ -18,10 +18,19 @@ public class SolicitarHospedagemServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
             throws ServletException, IOException {
-        Integer idUsuarioAnfitriao = Integer.parseInt(req.getParameter("id"));
-        
         HttpSession session = req.getSession();
         Viagem viagem = (Viagem) session.getAttribute("viagem");
+        
+        if(viagem.getDataInicio().after(viagem.getDataFim())) {
+            session.setAttribute("mensagemErroViagem",
+                    "A data de chegada é posterior a data de saída!");
+
+            RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/viagem/solicitar.jsp");
+            dispatcher.forward(req, resp);
+        }
+        
+        Integer idUsuarioAnfitriao = Integer.parseInt(req.getParameter("id"));
+        
         viagem.setAnfitriao(new UsuarioDAO().buscaPorId(idUsuarioAnfitriao));
         viagem.setStatusViagem(StatusViagem.PENDENTE);
         

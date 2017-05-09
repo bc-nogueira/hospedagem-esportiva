@@ -61,26 +61,34 @@
                 <c:when test="${usuarioLogado != null}">
                     <h1>Solicitar hospedagem</h1>
                     
+                    <c:if test="${mensagemErroViagem != null}">
+                        <div class="alert alert-danger">
+                            ${mensagemErroViagem}
+                            <c:remove var="mensagemErroViagem" scope="session" />
+                        </div>
+                    </c:if>
+                    
                     <form id="formBuscar">
                         <div class="form-group">
                             <label for="cidadeDestino">Cidade de Destino:</label> 
-                            <input type="text" class="form-control" id="cidadeDestino" name="cidadeDestino"/><br/>
+                            <input type="text" class="form-control" id="cidadeDestino" name="cidadeDestino" required/><br/>
                         </div>
                         <div class="form-group">
                             <label for="paisDestino">País de Destino:</label> 
-                            <input type="text" class="form-control" id="paisDestino" name="paisDestino"/><br/>
+                            <input type="text" class="form-control" id="paisDestino" name="paisDestino" required/><br/>
                         </div>
                         <div class="form-group">
                             <label for="quantidade">Quantas pessoas?</label> 
-                            <input type="number" class="form-control" id="quantidade" name="quantidade" value="1" min="1"/><br/>
+                            <input type="number" class="form-control" id="quantidade" name="quantidade" 
+                                   value="1" min="1" required/><br/>
                         </div>
                         <div class="form-group">
                             <label for="chegada">Chegada:</label> 
-                            <input type="date" class="form-control" id="chegada" name="chegada"/><br/>
+                            <input type="date" class="form-control" id="chegada" name="chegada" required/><br/>
                         </div>
                         <div class="form-group">
                             <label for="saida">Saída:</label> 
-                            <input type="date" class="form-control" id="saida" name="saida"/><br/>
+                            <input type="date" class="form-control" id="saida" name="saida" required/><br/>
                         </div>
                         <button type="submit" class="btn btn-primary">Buscar</button>
                     </form>
