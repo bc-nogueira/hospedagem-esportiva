@@ -51,6 +51,9 @@ public class EditaUsuarioServlet extends HttpServlet {
         if(req.getParameter("nome") == null || req.getParameter("nome").equals("")) {
             parametrosVazios.add("Nome");
         }
+        if(req.getParameter("sexo") == null || req.getParameter("sexo").equals("")) {
+            parametrosVazios.add("Sexo");
+        }
         if(req.getParameter("cidadeMoradia") == null || req.getParameter("cidadeMoradia").equals("")) {
             parametrosVazios.add("Cidade de Moradia");
         }
@@ -66,23 +69,4 @@ public class EditaUsuarioServlet extends HttpServlet {
         return parametrosVazios;
     }
     
-    private Usuario populaUsuario(HttpServletRequest req, String emailOriginal) {
-        Usuario usuario = new Usuario();
-        usuario.setNome(req.getParameter("nome"));
-        usuario.setCidadeMoradia(req.getParameter("cidadeMoradia"));
-        usuario.setPaisMoradia(req.getParameter("paisMoradia"));
-        usuario.setEsporteFavorito(req.getParameter("esporteFavorito"));
-        
-        if(req.getParameter("dispostoReceber") != null) {
-            usuario.setDispostoReceber(Boolean.TRUE);
-            usuario.setQuantReceber(Integer.parseInt(req.getParameter("quantReceber")));
-        } else {
-            usuario.setDispostoReceber(Boolean.FALSE);
-        }
-        
-        if(!req.getParameter("email").equals(emailOriginal))
-            usuario.setEmail(req.getParameter("email"));
-        
-        return usuario;
-    }
 }

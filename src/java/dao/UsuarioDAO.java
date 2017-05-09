@@ -27,6 +27,7 @@ public class UsuarioDAO {
         Usuario usuario = em.find(Usuario.class, usuarioAntigo.getId());
         
         usuario.setNome(req.getParameter("nome"));
+        usuario.setSexo(req.getParameter("sexo"));
         usuario.setCidadeMoradia(req.getParameter("cidadeMoradia"));
         usuario.setPaisMoradia(req.getParameter("paisMoradia"));
         usuario.setEsporteFavorito(req.getParameter("esporteFavorito"));

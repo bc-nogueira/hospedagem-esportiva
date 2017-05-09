@@ -35,6 +35,8 @@ public class Usuario {
     @Column(nullable = false)
     private String nome;
     @Column(nullable = false)
+    private String sexo;
+    @Column(nullable = false)
     private String cidadeMoradia;
     @Column(nullable = false)
     private String paisMoradia;
@@ -63,6 +65,14 @@ public class Usuario {
         this.nome = nome;
     }
 
+    public String getSexo() {
+        return sexo;
+    }
+
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
+    }
+    
     public String getCidadeMoradia() {
         return cidadeMoradia;
     }

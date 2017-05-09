@@ -36,8 +36,8 @@
                         <div class="row">
                             <div class="col-2"><b>Nome:</b></div>
                             <div class="col-4">${usuarioLogado.nome}</div>
-                            <div class="col-2"><b>E-mail:</b></div>
-                            <div class="col-4">${usuarioLogado.email}</div>
+                            <div class="col-2"><b>Sexo:</b></div>
+                            <div class="col-4">${usuarioLogado.sexo}</div>
                         </div>
                         <div class="row">
                             <div class="col-2"><b>Cidade de Moradia:</b></div>
@@ -46,8 +46,10 @@
                             <div class="col-4">${usuarioLogado.paisMoradia}</div>
                         </div>
                         <div class="row">
+                            <div class="col-2"><b>E-mail:</b></div>
+                            <div class="col-4">${usuarioLogado.email}</div>
                             <div class="col-2"><b>Esporte Favorito:</b></div>
-                            <div class="col">${usuarioLogado.esporteFavorito}</div>
+                            <div class="col-4">${usuarioLogado.esporteFavorito}</div>
                         </div>
                         <div class="row">
                             <div class="col-2"><b>Disposto a receber?</b></div>

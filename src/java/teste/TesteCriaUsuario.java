@@ -9,6 +9,7 @@ public class TesteCriaUsuario {
     public static void main(String[] args) {
         Usuario usuario1 = new Usuario();
         usuario1.setNome("Breno Nogueira");
+        usuario1.setSexo("Masculino");
         usuario1.setCidadeMoradia("Niterói");
         usuario1.setPaisMoradia("Brasil");
         usuario1.setEsporteFavorito("Futebol Americano");
@@ -18,6 +19,7 @@ public class TesteCriaUsuario {
         
         Usuario usuario2 = new Usuario();
         usuario2.setNome("Talita Rezende");
+        usuario2.setSexo("Feminino");
         usuario2.setCidadeMoradia("Maricá");
         usuario2.setPaisMoradia("Brasil");
         usuario2.setEsporteFavorito("Futebol");
@@ -28,6 +30,7 @@ public class TesteCriaUsuario {
         
         Usuario usuario3 = new Usuario();
         usuario3.setNome("Gabriel Guadalupe");
+        usuario3.setSexo("Masculino");
         usuario3.setCidadeMoradia("Buenos Aires");
         usuario3.setPaisMoradia("Argentina");
         usuario3.setEsporteFavorito("Basquete");
@@ -37,6 +40,7 @@ public class TesteCriaUsuario {
         
         Usuario usuario4 = new Usuario();
         usuario4.setNome("Renan Vieira");
+        usuario4.setSexo("Masculino");
         usuario4.setCidadeMoradia("Maricá");
         usuario4.setPaisMoradia("Brasil");
         usuario4.setEsporteFavorito("Futebol");
