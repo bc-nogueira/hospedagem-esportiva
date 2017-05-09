@@ -63,6 +63,7 @@
                                                         <th>Anfitrião</th>
                                                         <th></th>
                                                         <th></th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -80,6 +81,11 @@
                                                             <td>
                                                                 <c:if test="${solicitacaoFeita.statusViagem == 'APROVADA'}">
                                                                     <a href="${pageContext.request.contextPath}/confirmaSolicitacao?id=${solicitacaoFeita.id}">Confirmar</a>
+                                                                </c:if>
+                                                            </td>
+                                                            <td>
+                                                                <c:if test="${solicitacaoFeita.verificaSeJaPassou() and solicitacaoFeita.podeAvaliar(usuarioLogado.id) and solicitacaoFeita.statusViagem == 'CONFIRMADA'}">
+                                                                    <a href="${pageContext.request.contextPath}/jsp/viagem/avaliar.jsp?id=${solicitacaoFeita.id}">Avaliar</a>
                                                                 </c:if>
                                                             </td>
                                                         </tr>
@@ -111,6 +117,7 @@
                                                             <th>Hóspede</th>
                                                             <th></th>
                                                             <th></th>
+                                                            <th></th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
@@ -132,6 +139,11 @@
                                                                 <td>
                                                                     <c:if test="${solicitacaoRecebida.statusViagem == 'PENDENTE'}">
                                                                         <a href="${pageContext.request.contextPath}/rejeitaSolicitacao?id=${solicitacaoRecebida.id}">Rejeitar</a>
+                                                                    </c:if>
+                                                                </td>
+                                                                <td>
+                                                                    <c:if test="${solicitacaoRecebida.verificaSeJaPassou() and solicitacaoRecebida.podeAvaliar(usuarioLogado.id) and solicitacaoRecebida.statusViagem == 'CONFIRMADA'}">
+                                                                        <a href="${pageContext.request.contextPath}/jsp/viagem/avaliar.jsp?id=${solicitacaoRecebida.id}">Avaliar</a>
                                                                     </c:if>
                                                                 </td>
                                                             </tr>

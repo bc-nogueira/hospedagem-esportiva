@@ -8,6 +8,7 @@
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css"/>
         <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/estilo.css"/>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/jquery.js"></script>
+        <script type="text/javascript" src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
         <script type="text/javascript" src="${pageContext.request.contextPath}/js/app.js"></script>
     </head>
     <body>
@@ -16,7 +17,6 @@
         <div class="container container-principal">
             <c:choose>
                 <c:when test="${usuarioLogado != null}">
-                    <h1>Solicitar hospedagem</h1>
                     
                     
                     

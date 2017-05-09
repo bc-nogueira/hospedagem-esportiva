@@ -6,9 +6,19 @@ import javax.persistence.TypedQuery;
 import model.Avaliacao;
 import model.TipoAvaliacao;
 import model.Usuario;
+import model.Viagem;
 import util.JpaUtil;
 
 public class AvaliacaoDAO {
+    public void salvaAvaliacao(Avaliacao avaliacao) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        em.persist(avaliacao);
+        em.getTransaction().commit();
+        
+        em.close();
+    }
     
     public List<Avaliacao> buscaRecebidaPorUsuarioETipo(Usuario usuario, TipoAvaliacao tipo) {
         EntityManager em = new JpaUtil().getEntityManager();
@@ -24,6 +34,21 @@ public class AvaliacaoDAO {
         em.close();
         
         return recebidas;
+    }
+    
+    public List<Avaliacao> buscaPorViagemAvaliada(Viagem viagem) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        TypedQuery<Avaliacao> typedQuery = em.createNamedQuery("buscaPorViagemAvaliada", Avaliacao.class);
+        typedQuery.setParameter("pViagem", viagem);
+        
+        List<Avaliacao> avaliacoes = typedQuery.getResultList();
+        
+        em.getTransaction().commit();
+        em.close();
+        
+        return avaliacoes;
     }
     
 }

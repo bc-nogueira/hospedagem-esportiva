@@ -1,7 +1,9 @@
 package model;
 
+import dao.AvaliacaoDAO;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -19,7 +21,10 @@ import javax.persistence.TemporalType;
 @NamedQueries({
     @NamedQuery(name = "buscaRecebidaPorUsuarioETipo",
             query = "select a from Avaliacao a " + 
-                    "where a.avaliado = :pAvaliado and a.tipoAvaliacao = :pTipo")
+                    "where a.avaliado = :pAvaliado and a.tipoAvaliacao = :pTipo"),
+    @NamedQuery(name = "buscaPorViagemAvaliada",
+            query = "select a from Avaliacao a " + 
+                    "where a.viagemAvaliada = :pViagem")
 })
 public class Avaliacao {
     @Id
@@ -39,6 +44,11 @@ public class Avaliacao {
     private Usuario avaliador;
     @ManyToOne(optional = false)
     private Usuario avaliado;
+    
+    @ManyToOne
+    private Viagem viagemAvaliada;
+    
+//    private Esporte esporteAvaliado;
 
     public Integer getId() {
         return id;
@@ -95,9 +105,24 @@ public class Avaliacao {
     public void setAvaliado(Usuario avaliado) {
         this.avaliado = avaliado;
     }
+
+    public Viagem getViagemAvaliada() {
+        return viagemAvaliada;
+    }
+
+    public void setViagemAvaliada(Viagem viagemAvaliada) {
+        this.viagemAvaliada = viagemAvaliada;
+    }
     
     public String horaFormatada() {
         SimpleDateFormat formato = new SimpleDateFormat("HH:mm:ss, dd/MM/yyyy");
         return formato.format(this.getDataAvaliacao().getTime());
+    }
+    
+    public Boolean podeSerVista() {
+        List<Avaliacao> avaliacoes = new AvaliacaoDAO().buscaPorViagemAvaliada(this.getViagemAvaliada());
+        if(avaliacoes.size() == 2) 
+            return Boolean.TRUE;
+        return Boolean.FALSE;
     }
 }

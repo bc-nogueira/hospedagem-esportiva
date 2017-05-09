@@ -1,7 +1,9 @@
 package model;
 
+import dao.AvaliacaoDAO;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -132,5 +134,22 @@ public class Viagem {
     public String dataFimFormatada() {
         SimpleDateFormat formato = new SimpleDateFormat("dd/MM/yyyy");
         return formato.format(this.getDataFim().getTime());
+    }
+    
+    public Boolean verificaSeJaPassou() {
+        Calendar cal = Calendar.getInstance();
+        if(this.getDataFim().before(cal))
+            return Boolean.TRUE;
+        return Boolean.FALSE;
+    }
+    
+    public Boolean podeAvaliar(Integer idUsuarioLogado) {
+        List<Avaliacao> avaliacoes = new AvaliacaoDAO().buscaPorViagemAvaliada(this);
+        for(Avaliacao avaliacao : avaliacoes) {
+            if(avaliacao.getAvaliador().getId().equals(idUsuarioLogado)) {
+                return Boolean.FALSE;
+            }
+        }
+        return Boolean.TRUE;
     }
 }

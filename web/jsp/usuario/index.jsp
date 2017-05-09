@@ -74,24 +74,26 @@
                                     <div class="rate-yo-read" data-rateyo-rating="${notaMediaAmigos}"></div>
                                 </div>
                             </div>
-                            <c:forEach var="avaliacao" items="${recebidasAmigos}">
-                                <div class="card text-center margin-bottom-20" id="avaliacoes-amigos">
-                                    <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
+                            <div id="avaliacoes-amigos">
+                                <c:forEach var="avaliacao" items="${recebidasAmigos}">
+                                    <div class="card text-center margin-bottom-20">
+                                        <div class="card-header">
+                                            <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
+                                        </div>
+                                        <div class="card-block">
+                                            <h4 class="card-title">
+                                                <div class="rate-yo-read" style="margin: auto" data-rateyo-rating="${avaliacao.nota}"></div>
+                                            </h4>
+                                            <p class="card-text">
+                                                ${avaliacao.descricao}
+                                            </p>
+                                        </div>
+                                        <div class="card-footer text-muted">
+                                            ${avaliacao.horaFormatada()}
+                                        </div>
                                     </div>
-                                    <div class="card-block">
-                                        <h4 class="card-title">
-                                            <div class="rate-yo-read" style="margin: auto" data-rateyo-rating="${avaliacao.nota}"></div>
-                                        </h4>
-                                        <p class="card-text">
-                                            ${avaliacao.descricao}
-                                        </p>
-                                    </div>
-                                    <div class="card-footer text-muted">
-                                        ${avaliacao.horaFormatada()}
-                                    </div>
-                                </div>
-                            </c:forEach>
+                                </c:forEach>
+                            </div>
                         </c:if>
                         <c:if test="${recebidasHospede.size() > 0}">
                             <div class="row margin-bottom-20" id="media-notas-hospede">
@@ -100,24 +102,28 @@
                                     <div class="rate-yo-read" data-rateyo-rating="${notaMediaHospede}"></div>
                                 </div>
                             </div>
-                            <c:forEach var="avaliacao" items="${recebidasHospede}">
-                                <div class="card text-center margin-bottom-20" id="avaliacoes-hospede">
-                                    <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
-                                    </div>
-                                    <div class="card-block">
-                                        <h4 class="card-title">
-                                            <div class="rate-yo-read" style="margin: auto" data-rateyo-rating="${avaliacao.nota}"></div>
-                                        </h4>
-                                        <p class="card-text">
-                                            ${avaliacao.descricao}
-                                        </p>
-                                    </div>
-                                    <div class="card-footer text-muted">
-                                        ${avaliacao.horaFormatada()}
-                                    </div>
-                                </div>
-                            </c:forEach>    
+                            <div id="avaliacoes-hospede">
+                                <c:forEach var="avaliacao" items="${recebidasHospede}">
+                                    <c:if test="${avaliacao.podeSerVista()}">
+                                        <div class="card text-center margin-bottom-20">
+                                            <div class="card-header">
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
+                                            </div>
+                                            <div class="card-block">
+                                                <h4 class="card-title">
+                                                    <div class="rate-yo-read" style="margin: auto" data-rateyo-rating="${avaliacao.nota}"></div>
+                                                </h4>
+                                                <p class="card-text">
+                                                    ${avaliacao.descricao}
+                                                </p>
+                                            </div>
+                                            <div class="card-footer text-muted">
+                                                ${avaliacao.horaFormatada()}
+                                            </div>
+                                        </div>
+                                    </c:if>    
+                                </c:forEach>
+                            </div>
                         </c:if>
                         <c:if test="${recebidasAnfitriao.size() > 0}">
                             <div class="row margin-bottom-20" id="media-notas-anfitriao">
@@ -126,24 +132,28 @@
                                     <div class="rate-yo-read" data-rateyo-rating="${notaMediaAnfitriao}"></div>
                                 </div>
                             </div>
-                            <c:forEach var="avaliacao" items="${recebidasAnfitriao}">
-                                <div class="card text-center margin-bottom-20" id="avaliacoes-anfitriao">
-                                    <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
-                                    </div>
-                                    <div class="card-block">
-                                        <h4 class="card-title">
-                                            <div class="rate-yo-read" style="margin: auto" data-rateyo-rating="${avaliacao.nota}"></div>
-                                        </h4>
-                                        <p class="card-text">
-                                            ${avaliacao.descricao}
-                                        </p>
-                                    </div>
-                                    <div class="card-footer text-muted">
-                                        ${avaliacao.horaFormatada()}
-                                    </div>
-                                </div>
-                            </c:forEach>    
+                            <div id="avaliacoes-anfitriao">
+                                <c:forEach var="avaliacao" items="${recebidasAnfitriao}">
+                                    <c:if test="${avaliacao.podeSerVista()}">
+                                        <div class="card text-center margin-bottom-20">
+                                            <div class="card-header">
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
+                                            </div>
+                                            <div class="card-block">
+                                                <h4 class="card-title">
+                                                    <div class="rate-yo-read" style="margin: auto" data-rateyo-rating="${avaliacao.nota}"></div>
+                                                </h4>
+                                                <p class="card-text">
+                                                    ${avaliacao.descricao}
+                                                </p>
+                                            </div>
+                                            <div class="card-footer text-muted">
+                                                ${avaliacao.horaFormatada()}
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:forEach>
+                            </div>
                         </c:if>
                         <c:if test="${recebidasLevaEsporte.size() > 0}">
                             <div class="row margin-bottom-20" id="media-notas-leva">
@@ -152,24 +162,28 @@
                                     <div class="rate-yo-read" data-rateyo-rating="${notaMediaLevaEsporte}"></div>
                                 </div>
                             </div>
-                            <c:forEach var="avaliacao" items="${recebidasLevaEsporte}">
-                                <div class="card text-center margin-bottom-20" id="avaliacoes-leva">
-                                    <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
-                                    </div>
-                                    <div class="card-block">
-                                        <h4 class="card-title">
-                                            <div class="rate-yo-read" style="margin: auto" data-rateyo-rating="${avaliacao.nota}"></div>
-                                        </h4>
-                                        <p class="card-text">
-                                            ${avaliacao.descricao}
-                                        </p>
-                                    </div>
-                                    <div class="card-footer text-muted">
-                                        ${avaliacao.horaFormatada()}
-                                    </div>
-                                </div>
-                            </c:forEach>    
+                            <div id="avaliacoes-leva">
+                                <c:forEach var="avaliacao" items="${recebidasLevaEsporte}">
+                                    <c:if test="${avaliacao.podeSerVista()}">
+                                        <div class="card text-center margin-bottom-20">
+                                            <div class="card-header">
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
+                                            </div>
+                                            <div class="card-block">
+                                                <h4 class="card-title">
+                                                    <div class="rate-yo-read" style="margin: auto" data-rateyo-rating="${avaliacao.nota}"></div>
+                                                </h4>
+                                                <p class="card-text">
+                                                    ${avaliacao.descricao}
+                                                </p>
+                                            </div>
+                                            <div class="card-footer text-muted">
+                                                ${avaliacao.horaFormatada()}
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:forEach>
+                            </div>
                         </c:if>
                         <c:if test="${recebidasParticipaEsporte.size() > 0}">
                             <div class="row margin-bottom-20" id="media-notas-participa">
@@ -178,24 +192,28 @@
                                     <div class="rate-yo-read" data-rateyo-rating="${notaMediaParticipaEsporte}"></div>
                                 </div>
                             </div>
-                            <c:forEach var="avaliacao" items="${recebidasParticipaEsporte}">
-                                <div class="card text-center margin-bottom-20" id="avaliacoes-participa">
-                                    <div class="card-header">
-                                        <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
-                                    </div>
-                                    <div class="card-block">
-                                        <h4 class="card-title">
-                                            <div class="rate-yo-read" style="margin: auto" data-rateyo-rating="${avaliacao.nota}"></div>
-                                        </h4>
-                                        <p class="card-text">
-                                            ${avaliacao.descricao}
-                                        </p>
-                                    </div>
-                                    <div class="card-footer text-muted">
-                                        ${avaliacao.horaFormatada()}
-                                    </div>
-                                </div>
-                            </c:forEach>    
+                            <div id="avaliacoes-participa">
+                                <c:forEach var="avaliacao" items="${recebidasParticipaEsporte}">
+                                    <c:if test="${avaliacao.podeSerVista()}">
+                                        <div class="card text-center margin-bottom-20">
+                                            <div class="card-header">
+                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${avaliacao.avaliador.id}">${avaliacao.avaliador.nome}</a>
+                                            </div>
+                                            <div class="card-block">
+                                                <h4 class="card-title">
+                                                    <div class="rate-yo-read" style="margin: auto" data-rateyo-rating="${avaliacao.nota}"></div>
+                                                </h4>
+                                                <p class="card-text">
+                                                    ${avaliacao.descricao}
+                                                </p>
+                                            </div>
+                                            <div class="card-footer text-muted">
+                                                ${avaliacao.horaFormatada()}
+                                            </div>
+                                        </div>
+                                    </c:if>
+                                </c:forEach> 
+                            </div>
                         </c:if>
                     </div>
                 </c:when>

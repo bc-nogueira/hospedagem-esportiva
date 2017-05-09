@@ -30,7 +30,7 @@
                     <div class="jumbotron">
                         <h1 class="display-4 d-flex justify-content-between align-items-center">
                             Visualizar Perfil de outro Usuário
-                            <a href="#" class="btn btn-secondary">Adicionar</a>
+                            <!--<a href="#" class="btn btn-secondary">Adicionar</a>-->
                         </h1>
                         <hr class="my-4"/>
                         <div class="row">

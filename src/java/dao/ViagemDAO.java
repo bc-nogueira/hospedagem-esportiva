@@ -21,6 +21,18 @@ public class ViagemDAO {
         em.close();
     }
     
+    public Viagem buscaPorId(Integer id) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        Viagem viagem = em.find(Viagem.class, id);
+        
+        em.getTransaction().commit();
+        em.close();
+        
+        return viagem;
+    }
+    
     public List<Viagem> buscaViagemPorDatas(Calendar dataInicio, Calendar dataFim) {
         EntityManager em = new JpaUtil().getEntityManager();
         em.getTransaction().begin();
