@@ -47,8 +47,6 @@
                         <input type="submit" class="btn btn-primary" value="Enviar"/>
                     </form>
                     
-                    
-                    
                 </c:when>
                 <c:when test="${usuarioLogado == null}">
                     <div class="alert alert-danger">

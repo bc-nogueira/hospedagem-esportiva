@@ -30,7 +30,9 @@
                     <div class="jumbotron">
                         <h1 class="display-4 d-flex justify-content-between align-items-center">
                             Visualizar Perfil de outro Usuário
-                            <!--<a href="#" class="btn btn-secondary">Adicionar</a>-->
+                            <c:if test="${usuarioMostrar.podeAvaliar(usuarioLogado.id)}">
+                                <a href="${pageContext.request.contextPath}/jsp/usuario/avaliar.jsp?id=${usuarioMostrar.id}" class="btn btn-secondary">Avaliar</a>
+                            </c:if>
                         </h1>
                         <hr class="my-4"/>
                         <div class="row">
@@ -93,10 +95,9 @@
                                         <p class="card-text">
                                             ${avaliacao.descricao}
                                         </p>
-                                        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                                     </div>
                                     <div class="card-footer text-muted">
-                                        11/10/2015 <span style="color: red">Colocar data do BD</span>
+                                        ${avaliacao.horaFormatada()}
                                     </div>
                                 </div>
                             </c:forEach>
@@ -127,10 +128,9 @@
                                         <p class="card-text">
                                             ${avaliacao.descricao}
                                         </p>
-                                        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                                     </div>
                                     <div class="card-footer text-muted">
-                                        11/10/2015 <span style="color: red">Colocar data do BD</span>
+                                        ${avaliacao.horaFormatada()}
                                     </div>
                                 </div>
                             </c:forEach>    
@@ -161,10 +161,9 @@
                                         <p class="card-text">
                                             ${avaliacao.descricao}
                                         </p>
-                                        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                                     </div>
                                     <div class="card-footer text-muted">
-                                        11/10/2015 <span style="color: red">Colocar data do BD</span>
+                                        ${avaliacao.horaFormatada()}
                                     </div>
                                 </div>
                             </c:forEach>    
@@ -195,10 +194,9 @@
                                         <p class="card-text">
                                             ${avaliacao.descricao}
                                         </p>
-                                        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                                     </div>
                                     <div class="card-footer text-muted">
-                                        11/10/2015 <span style="color: red">Colocar data do BD</span>
+                                        ${avaliacao.horaFormatada()}
                                     </div>
                                 </div>
                             </c:forEach>    
@@ -229,10 +227,9 @@
                                         <p class="card-text">
                                             ${avaliacao.descricao}
                                         </p>
-                                        <!--<a href="#" class="btn btn-primary">Go somewhere</a>-->
                                     </div>
                                     <div class="card-footer text-muted">
-                                        11/10/2015 <span style="color: red">Colocar data do BD</span>
+                                        ${avaliacao.horaFormatada()}
                                     </div>
                                 </div>
                             </c:forEach>    

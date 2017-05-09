@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import model.Usuario;
 
 @WebServlet("/buscaUsuario")
@@ -20,6 +21,11 @@ public class BuscaUsuarioServlet extends HttpServlet {
         String texto = req.getParameter("texto");
         
         List<Usuario> usuarios = new UsuarioDAO().buscaPorNomeEEmailLike(texto, texto);
+        
+        HttpSession session = req.getSession();
+        Usuario usuarioLogado = (Usuario) session.getAttribute("usuarioLogado");
+        
+        usuarios.remove(usuarioLogado);
         
         String json = new Gson().toJson(usuarios);
         

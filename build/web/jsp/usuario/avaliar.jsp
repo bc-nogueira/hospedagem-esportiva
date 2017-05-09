@@ -16,7 +16,7 @@
         
         <script type="text/javascript">
             $(function () {
-                $("#avaliacaoViagem").rateYo({
+                $("#avaliacaoUsuario").rateYo({
                     halfStar: true,
                     onSet: function (rating, rateYoInstance) {
                         $('#nota').val(rating);
@@ -31,13 +31,14 @@
         <div class="container container-principal">
             <c:choose>
                 <c:when test="${usuarioLogado != null}">
-                    <h1>Avaliar hospedagem</h1>
+                    
+                    <h1>Avaliar usuário</h1>
                     <hr/>
                     
-                    <form action="${pageContext.request.contextPath}/avaliarViagem" method="POST">
-                        <input type="hidden" id="idViagem" name="idViagem" value="${param.id}"/>
+                    <form action="${pageContext.request.contextPath}/avaliarUsuario" method="POST">
+                        <input type="hidden" id="idUsuario" name="idUsuario" value="${param.id}"/>
                         
-                        <div style="display:inline-block;" id="avaliacaoViagem"></div>
+                        <div style="display:inline-block;" id="avaliacaoUsuario"></div>
                         <input type="hidden" id="nota" name="nota"/>
                         
                         <div class="form-group">

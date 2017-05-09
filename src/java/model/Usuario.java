@@ -1,5 +1,9 @@
 package model;
 
+import dao.AvaliacaoDAO;
+import dao.UsuarioDAO;
+import java.util.List;
+import java.util.Objects;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -42,11 +46,6 @@ public class Usuario {
     private String email;
     @Column(nullable = false)
     private String senha;
-    
-//    @OneToMany(mappedBy = "avaliador")
-//    private List<Avaliacao> avaliacoesFeitas;
-//    @OneToMany(mappedBy = "avaliado")
-//    private List<Avaliacao> avaliacoesRecebidas;
     
     public Integer getId() {
         return id;
@@ -120,20 +119,38 @@ public class Usuario {
         this.senha = senha;
     }
 
-//    public List<Avaliacao> getAvaliacoesFeitas() {
-//        return avaliacoesFeitas;
-//    }
-//
-//    public void setAvaliacoesFeitas(List<Avaliacao> avaliacoesFeitas) {
-//        this.avaliacoesFeitas = avaliacoesFeitas;
-//    }
-//
-//    public List<Avaliacao> getAvaliacoesRecebidas() {
-//        return avaliacoesRecebidas;
-//    }
-//
-//    public void setAvaliacoesRecebidas(List<Avaliacao> avaliacoesRecebidas) {
-//        this.avaliacoesRecebidas = avaliacoesRecebidas;
-//    }
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 29 * hash + Objects.hashCode(this.id);
+        return hash;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Usuario other = (Usuario) obj;
+        if (!Objects.equals(this.id, other.id)) {
+            return false;
+        }
+        return true;
+    }
+    
+    public Boolean podeAvaliar(Integer id) {
+        Usuario usuarioLogado = new UsuarioDAO().buscaPorId(id);
+        List<Avaliacao> avaliacoes = new AvaliacaoDAO()
+                .buscaPorAvaliadoEAvaliadorETipo(this, usuarioLogado, TipoAvaliacao.AMIGO);
+        if(avaliacoes.isEmpty())
+            return Boolean.TRUE;
+        return Boolean.FALSE;
+    }
     
 }
