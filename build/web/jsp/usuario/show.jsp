@@ -35,38 +35,48 @@
                             </c:if>
                         </h1>
                         <hr class="my-4"/>
+                        
                         <div class="row">
-                            <div class="col-2"><b>Nome:</b></div>
-                            <div class="col-4">${usuarioMostrar.nome}</div>
-                            <div class="col-2"><b>E-mail:</b></div>
-                            <div class="col-4">${usuarioMostrar.email}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2"><b>Cidade de Moradia:</b></div>
-                            <div class="col-4">${usuarioMostrar.cidadeMoradia}</div>
-                            <div class="col-2"><b>País de Moradia:</b></div>
-                            <div class="col-4">${usuarioMostrar.paisMoradia}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2"><b>Esporte Favorito:</b></div>
-                            <div class="col">${usuarioMostrar.esporteFavorito}</div>
-                        </div>
-                        <div class="row">
-                            <div class="col-2"><b>Disposto a receber?</b></div>
-                            <div class="col-4">
-                                <c:choose>
-                                    <c:when test="${usuarioMostrar.dispostoReceber}">
-                                        <span style="color: green">Sim</span>
-                                    </c:when>
-                                    <c:when test="${!usuarioMostrar.dispostoReceber}">
-                                        <span style="color: red">Não</span>
-                                    </c:when>
-                                </c:choose>
+                            <div class="col-3">
+                                <img src="${pageContext.request.contextPath}/img/profile.png"/>
                             </div>
-                            <c:if test="${usuarioMostrar.dispostoReceber}">
-                                <div class="col-2"><b>Quantos?</b></div>
-                                <div class="col-4">${usuarioMostrar.quantReceber}</div>
-                            </c:if>
+                            <div class="col-9 d-flex flex-column justify-content-around">
+                                <div class="row">
+                                    <div class="col-3"><b>Nome:</b></div>
+                                    <div class="col-3">${usuarioMostrar.nome}</div>
+                                    <div class="col-3"><b>Sexo:</b></div>
+                                    <div class="col-3">${usuarioMostrar.sexo}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3"><b>Cidade de Moradia:</b></div>
+                                    <div class="col-3">${usuarioMostrar.cidadeMoradia}</div>
+                                    <div class="col-3"><b>País de Moradia:</b></div>
+                                    <div class="col-3">${usuarioMostrar.paisMoradia}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3"><b>E-mail:</b></div>
+                                    <div class="col-3">${usuarioMostrar.email}</div>
+                                    <div class="col-3"><b>Esporte Favorito:</b></div>
+                                    <div class="col-3">${usuarioMostrar.esporteFavorito}</div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-3"><b>Disposto a receber?</b></div>
+                                    <div class="col-3">
+                                        <c:choose>
+                                            <c:when test="${usuarioMostrar.dispostoReceber}">
+                                                <span style="color: green">Sim</span>
+                                            </c:when>
+                                            <c:when test="${!usuarioMostrar.dispostoReceber}">
+                                                <span style="color: red">Não</span>
+                                            </c:when>
+                                        </c:choose>
+                                    </div>
+                                    <c:if test="${usuarioMostrar.dispostoReceber}">
+                                        <div class="col-3"><b>Quantos?</b></div>
+                                        <div class="col-3">${usuarioMostrar.quantReceber}</div>
+                                    </c:if>
+                                </div>
+                            </div>
                         </div>
                         <hr/>
                         <c:if test="${recebidasAmigosUsuarioMostrar.size() > 0}">

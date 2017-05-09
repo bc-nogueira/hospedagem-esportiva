@@ -51,6 +51,9 @@ public class NovoUsuarioServlet extends HttpServlet{
         if(req.getParameter("nome") == null || req.getParameter("nome").equals("")) {
             parametrosVazios.add("Nome");
         }
+        if(req.getParameter("sexo") == null || req.getParameter("sexo").equals("")) {
+            parametrosVazios.add("Sexo");
+        }
         if(req.getParameter("cidadeMoradia") == null || req.getParameter("cidadeMoradia").equals("")) {
             parametrosVazios.add("Cidade de Moradia");
         }
@@ -72,6 +75,7 @@ public class NovoUsuarioServlet extends HttpServlet{
     private Usuario populaUsuario(HttpServletRequest req) {
         Usuario usuario = new Usuario();
         usuario.setNome(req.getParameter("nome"));
+        usuario.setSexo(req.getParameter("sexo"));
         usuario.setCidadeMoradia(req.getParameter("cidadeMoradia"));
         usuario.setPaisMoradia(req.getParameter("paisMoradia"));
         usuario.setEsporteFavorito(req.getParameter("esporteFavorito"));

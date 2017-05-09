@@ -35,6 +35,14 @@
                     <input type="text" class="form-control" id="nome" name="nome"/><br/>
                 </div>
                 <div class="form-group">
+                    <label for="sexo">Sexo:</label>
+                    <select class="form-control" id="sexo" name="sexo">
+                        <option></option>
+                        <option>Feminino</option>
+                        <option>Masculino</option>
+                    </select>
+                </div>
+                <div class="form-group">
                     <label for="cidadeMoradia">Cidade de moradia:</label> 
                     <input type="text" class="form-control" id="cidadeMoradia" name="cidadeMoradia"/><br/>
                 </div>
