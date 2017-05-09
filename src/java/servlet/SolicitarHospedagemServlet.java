@@ -3,6 +3,7 @@ package servlet;
 import dao.UsuarioDAO;
 import dao.ViagemDAO;
 import java.io.IOException;
+import java.util.Calendar;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,15 @@ public class SolicitarHospedagemServlet extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = req.getSession();
         Viagem viagem = (Viagem) session.getAttribute("viagem");
+        
+        if(viagem.getDataInicio().before(Calendar.getInstance()) ||
+                viagem.getDataFim().before(Calendar.getInstance())) {
+            session.setAttribute("mensagemErroViagem",
+                    "Não é possível escolher data anterior a data atual!");
+
+            RequestDispatcher dispatcher = req.getRequestDispatcher("jsp/viagem/solicitar.jsp");
+            dispatcher.forward(req, resp);
+        }
         
         if(viagem.getDataInicio().after(viagem.getDataFim())) {
             session.setAttribute("mensagemErroViagem",
