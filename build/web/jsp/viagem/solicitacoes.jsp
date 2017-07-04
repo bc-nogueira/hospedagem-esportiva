@@ -76,7 +76,11 @@
                                                             <td>${solicitacaoFeita.dataFimFormatada()}</td>
                                                             <td>${solicitacaoFeita.quantHospedes}</td>
                                                             <td>${solicitacaoFeita.statusViagem}</td>
-                                                            <td>${solicitacaoFeita.anfitriao.nome}</td>
+                                                            <td>
+                                                                <a href="${pageContext.request.contextPath}/mostraUsuario?id=${solicitacaoFeita.anfitriao.id}">
+                                                                    ${solicitacaoFeita.anfitriao.nome}
+                                                                </a>
+                                                            </td>
                                                             <td><a href="${pageContext.request.contextPath}/excluirSolicitacao?id=${solicitacaoFeita.id}">Excluir</a></td>
                                                             <td>
                                                                 <c:if test="${solicitacaoFeita.statusViagem == 'APROVADA'}">
@@ -84,9 +88,14 @@
                                                                 </c:if>
                                                             </td>
                                                             <td>
-                                                                <c:if test="${solicitacaoFeita.verificaSeJaPassou() and solicitacaoFeita.podeAvaliar(usuarioLogado.id) and solicitacaoFeita.statusViagem == 'CONFIRMADA'}">
-                                                                    <a href="${pageContext.request.contextPath}/jsp/viagem/avaliar.jsp?id=${solicitacaoFeita.id}">Avaliar</a>
-                                                                </c:if>
+                                                                <c:choose>
+                                                                    <c:when test="${solicitacaoFeita.verificaSeJaPassou() and solicitacaoFeita.podeAvaliar(usuarioLogado.id) and solicitacaoFeita.statusViagem == 'CONFIRMADA'}">
+                                                                        <a href="${pageContext.request.contextPath}/jsp/viagem/avaliar.jsp?id=${solicitacaoFeita.id}">Avaliar</a>
+                                                                    </c:when>
+                                                                    <c:when test="${solicitacaoFeita.verificaSeJaPassou() and solicitacaoFeita.jaAvaliou(usuarioLogado.id) and solicitacaoFeita.statusViagem == 'CONFIRMADA'}">
+                                                                        Já avaliou!
+                                                                    </c:when>
+                                                                </c:choose>
                                                             </td>
                                                         </tr>
                                                     </c:forEach>
@@ -130,7 +139,11 @@
                                                                 <td>${solicitacaoRecebida.dataFimFormatada()}</td>
                                                                 <td>${solicitacaoRecebida.quantHospedes}</td>
                                                                 <td>${solicitacaoRecebida.statusViagem}</td>
-                                                                <td>${solicitacaoRecebida.hospede.nome}</td>
+                                                                <td>
+                                                                    <a href="${pageContext.request.contextPath}/mostraUsuario?id=${solicitacaoRecebida.hospede.id}">
+                                                                        ${solicitacaoRecebida.hospede.nome}
+                                                                    </a>
+                                                                </td>
                                                                 <td>
                                                                     <c:if test="${solicitacaoRecebida.statusViagem == 'PENDENTE'}">
                                                                         <a href="${pageContext.request.contextPath}/aprovaSolicitacao?id=${solicitacaoRecebida.id}">Aprovar</a>
@@ -142,9 +155,14 @@
                                                                     </c:if>
                                                                 </td>
                                                                 <td>
-                                                                    <c:if test="${solicitacaoRecebida.verificaSeJaPassou() and solicitacaoRecebida.podeAvaliar(usuarioLogado.id) and solicitacaoRecebida.statusViagem == 'CONFIRMADA'}">
-                                                                        <a href="${pageContext.request.contextPath}/jsp/viagem/avaliar.jsp?id=${solicitacaoRecebida.id}">Avaliar</a>
-                                                                    </c:if>
+                                                                    <c:choose>
+                                                                        <c:when test="${solicitacaoRecebida.verificaSeJaPassou() and solicitacaoRecebida.podeAvaliar(usuarioLogado.id) and solicitacaoRecebida.statusViagem == 'CONFIRMADA'}">
+                                                                            <a href="${pageContext.request.contextPath}/jsp/viagem/avaliar.jsp?id=${solicitacaoRecebida.id}">Avaliar</a>
+                                                                        </c:when>
+                                                                        <c:when test="${solicitacaoRecebida.verificaSeJaPassou() and solicitacaoRecebida.jaAvaliou(usuarioLogado.id) and solicitacaoRecebida.statusViagem == 'CONFIRMADA'}">
+                                                                            Já avaliou!
+                                                                        </c:when>
+                                                                    </c:choose>
                                                                 </td>
                                                             </tr>
                                                         </c:forEach>

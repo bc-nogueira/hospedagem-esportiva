@@ -47,13 +47,13 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("recebidasAmigos", recebidasAmigos);
             session.setAttribute("notaMediaAmigos", avaliacaoService.calculaNotaMedia(recebidasAmigos));
             session.setAttribute("recebidasHospede", recebidasHospede);
-            session.setAttribute("notaMediaHospede", avaliacaoService.calculaNotaMedia(recebidasHospede));
+            session.setAttribute("notaMediaHospede", avaliacaoService.calculaNotaMediaViagens(recebidasHospede, usuario));
             session.setAttribute("recebidasAnfitriao", recebidasAnfitriao);
-            session.setAttribute("notaMediaAnfitriao", avaliacaoService.calculaNotaMedia(recebidasAnfitriao));            
+            session.setAttribute("notaMediaAnfitriao", avaliacaoService.calculaNotaMediaViagens(recebidasAnfitriao, usuario));            
             session.setAttribute("recebidasLevaEsporte", recebidasLevaEsporte);
-            session.setAttribute("notaMediaLevaEsporte", avaliacaoService.calculaNotaMedia(recebidasLevaEsporte));
+            session.setAttribute("notaMediaLevaEsporte", avaliacaoService.calculaNotaMediaViagens(recebidasLevaEsporte, usuario));
             session.setAttribute("recebidasParticipaEsporte", recebidasParticipaEsporte);
-            session.setAttribute("notaMediaParticipaEsporte", avaliacaoService.calculaNotaMedia(recebidasParticipaEsporte));
+            session.setAttribute("notaMediaParticipaEsporte", avaliacaoService.calculaNotaMediaViagens(recebidasParticipaEsporte, usuario));
             pagina = "jsp/usuario/index.jsp";
         } else {
             session.setAttribute("mensagem", "E-mail ou senha incorretos.");

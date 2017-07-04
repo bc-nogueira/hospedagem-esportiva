@@ -69,4 +69,20 @@ public class AvaliacaoDAO {
         return avaliacoes;
     }
     
+    public List<Avaliacao> buscaPorViagemAvaliadaEAvaliador(Viagem viagem, Usuario avaliador) {
+        EntityManager em = new JpaUtil().getEntityManager();
+        em.getTransaction().begin();
+        
+        TypedQuery<Avaliacao> typedQuery = em.createNamedQuery("buscaPorViagemAvaliadaEAvaliador", Avaliacao.class);
+        typedQuery.setParameter("pViagem", viagem);
+        typedQuery.setParameter("pAvaliador", avaliador);
+        
+        List<Avaliacao> avaliacoes = typedQuery.getResultList();
+        
+        em.getTransaction().commit();
+        em.close();
+        
+        return avaliacoes;
+    }
+    
 }

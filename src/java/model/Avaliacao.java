@@ -27,7 +27,10 @@ import javax.persistence.TemporalType;
                     "where a.viagemAvaliada = :pViagem"),
     @NamedQuery(name = "buscaPorAvaliadoEAvaliadorETipo",
             query = "select a from Avaliacao a " + 
-                    "where a.avaliado = :pAvaliado and a.avaliador = :pAvaliador and a.tipoAvaliacao = :pTipo")
+                    "where a.avaliado = :pAvaliado and a.avaliador = :pAvaliador and a.tipoAvaliacao = :pTipo"),
+    @NamedQuery(name = "buscaPorViagemAvaliadaEAvaliador",
+            query = "select a from Avaliacao a " + 
+                    "where a.viagemAvaliada = :pViagem and a.avaliador = :pAvaliador")
 })
 public class Avaliacao {
     @Id

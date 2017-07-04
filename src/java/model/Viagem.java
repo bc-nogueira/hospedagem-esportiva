@@ -152,4 +152,15 @@ public class Viagem {
         }
         return Boolean.TRUE;
     }
+    
+    public Boolean jaAvaliou(Integer idUsuarioLogado) {
+        List<Avaliacao> avaliacoes = new AvaliacaoDAO().buscaPorViagemAvaliada(this);
+        for(Avaliacao avaliacao : avaliacoes) {
+            if(avaliacao.getAvaliador().getId().equals(idUsuarioLogado) ||
+                    avaliacao.getAvaliado().getId().equals(idUsuarioLogado)) {
+                return Boolean.TRUE;
+            }
+        }
+        return Boolean.FALSE;
+    }
 }
