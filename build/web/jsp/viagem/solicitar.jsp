@@ -84,11 +84,11 @@
                         </div>
                         <div class="form-group">
                             <label for="chegada">Chegada:</label> 
-                            <input type="text" class="form-control" id="chegada" name="chegada" required/><br/>
+                            <input type="date" class="form-control" id="chegada" name="chegada" required/><br/>
                         </div>
                         <div class="form-group">
                             <label for="saida">Saída:</label> 
-                            <input type="text" class="form-control" id="saida" name="saida" required/><br/>
+                            <input type="date" class="form-control" id="saida" name="saida" required/><br/>
                         </div>
                         <button type="submit" class="btn btn-primary">Buscar</button>
                     </form>
