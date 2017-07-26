@@ -127,7 +127,7 @@ public class Avaliacao {
     
     public Boolean podeSerVista() {
         List<Avaliacao> avaliacoes = new AvaliacaoDAO().buscaPorViagemAvaliada(this.getViagemAvaliada());
-        if(avaliacoes.size() == 2) 
+        if(avaliacoes.size() >= 2)
             return Boolean.TRUE;
         return Boolean.FALSE;
     }
